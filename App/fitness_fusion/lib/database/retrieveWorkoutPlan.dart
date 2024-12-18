@@ -12,7 +12,6 @@ Future<WorkoutPlan> retriveWorkoutPlan(
   List<WorkoutExercise> tempexercise = [];
 
   final response = await http.get(Uri.parse(DB("workout/$user_id").getLink()));
-
   if (response.statusCode == 200) {
     final responseData = jsonDecode(response.body);
     if (responseData.length > 0) {

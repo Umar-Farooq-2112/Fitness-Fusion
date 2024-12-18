@@ -18,7 +18,6 @@ Future<DietPlan> retrieveDietPlan(BuildContext context, int user_id) async {
     if (responseData.length > 0) {
       temp = new DietPlan(responseData['id'],
           getDateTime(responseData['enrollmentDate']), responseData['name']);
-
       final response2 =
           await http.get(Uri.parse(DB("diet/data/${temp.id}").getLink()));
       if (response2.statusCode == 200) {
@@ -27,20 +26,20 @@ Future<DietPlan> retrieveDietPlan(BuildContext context, int user_id) async {
           temp.Foods = ((response2Data as List<dynamic>))
               .map((item) => Meal(
                     FoodItem(
-                        item['id'],
-                        item['name'],
-                        item['description'],
-                        Image.memory(base64Decode(item['image'])),
-                        item['calories'],
-                        item['fats'],
-                        item['protein'],
-                        item['carbohydrates'],
-                        item['fibre'],
-                        item['sugar']),
-                    item['quantity'],
-                    getTimeofDay(
-                      item['time'],
+                      int.parse(
+                          item['id'].toString()), // Ensures 'id' is an int
+                      item['name'],
+                      item['description'],
+                      Image.memory(base64Decode(item['image'])),
+                      _toDouble(item['calories']), // Convert to double
+                      _toDouble(item['fats']), // Convert to double
+                      _toDouble(item['protein']), // Convert to double
+                      _toDouble(item['carbohydrates']), // Convert to double
+                      _toDouble(item['fibre']), // Convert to double
+                      _toDouble(item['sugar']), // Convert to double
                     ),
+                    _toDouble(item['quantity']),
+                    getTimeofDay(item['time']),
                   ))
               .toList();
         }
@@ -50,7 +49,16 @@ Future<DietPlan> retrieveDietPlan(BuildContext context, int user_id) async {
   return temp;
 }
 
-Future<void> storeDietPlan(
+double _toDouble(dynamic value) {
+  if (value is double) return value; // Already a double
+  if (value is String)
+    return double.tryParse(value) ?? 0.0; // Convert String to double
+  if (value is int) return value.toDouble(); // Convert int to double
+  throw FormatException(
+      "Cannot convert $value to double"); // Handle unexpected types
+}
+
+Future<int> storeDietPlan(
   BuildContext context,
   DietPlan input,
 ) async {
@@ -77,7 +85,7 @@ Future<void> storeDietPlan(
       }
     } else {
       createDialog(context, "Unable to save workout plan");
-      return;
+      return -1;
     }
 
     int n = input.Foods.length;
@@ -98,14 +106,15 @@ Future<void> storeDietPlan(
       );
 
       if (response2.statusCode == 200) {
+        createDialog(context, "Done");
       } else {
         createDialog(context, "Error occured $i");
-        return;
       }
     }
     createDialog(context, "Saved");
-
   } catch (e) {
     createDialog(context, "Error: $e");
+    return -1;
   }
+  return MyDietPlan.id;
 }

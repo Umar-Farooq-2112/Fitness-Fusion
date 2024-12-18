@@ -1,8 +1,12 @@
 select * from user_authentication;
-
+select * from exercises;
 SELECT f_id AS id,name,description,image,calories,fats,protein,carbohydrates,fibre,sugar
 FROM food_items;
+select * from workout_keywords;
 
+select * from diet_Keywords;
+insert into user_workouts (USER_ID,w_ID) values (2,1);
+select * from keywords;
 SELECT 
     e.e_id id,
     e.name AS name,

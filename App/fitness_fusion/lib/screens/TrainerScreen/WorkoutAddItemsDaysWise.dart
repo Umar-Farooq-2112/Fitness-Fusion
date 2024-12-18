@@ -51,7 +51,7 @@ class _WorkoutAddItemsDaysWiseState extends State<WorkoutAddItemsDaysWise> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       ElevatedButton(
-                        style: ElevatedButton.styleFrom(primary: Colors.black),
+                        style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
                         child: Text('Add Exercises',
                         style: TextStyle(color:Colors.white,),),
                         onPressed: () async {
@@ -79,7 +79,7 @@ class _WorkoutAddItemsDaysWiseState extends State<WorkoutAddItemsDaysWise> {
                         },
                       ),
                       ElevatedButton(
-                        style: ElevatedButton.styleFrom(primary: Colors.black),
+                        style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
                         onPressed: () async {
                           Fluttertoast.showToast(
                             msg: "Plan Saved!",

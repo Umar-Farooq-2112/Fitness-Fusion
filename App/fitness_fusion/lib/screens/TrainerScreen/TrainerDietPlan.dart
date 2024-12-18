@@ -1,6 +1,8 @@
+import 'package:fitness_fusion/database/keywordsPlan.dart';
 import 'package:fitness_fusion/database/retrieveDietPlan.dart';
 import 'package:fitness_fusion/dataclass/FoodItem.dart';
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
+import 'package:fitness_fusion/dataclass/Keyword.dart';
 import 'package:fitness_fusion/dataclass/Plan.dart';
 import 'package:fitness_fusion/screens/UserScreen/buildAppBar.dart';
 import 'package:flutter/material.dart';
@@ -14,15 +16,17 @@ class FoodData {
 }
 
 class TrainerDietPlan extends StatefulWidget {
-  // TrainerDietPlan(WorkoutPlan myWorkoutPlan);
+  List<Keyword> keywords;
+  TrainerDietPlan(this.keywords);
 
   @override
-  State<TrainerDietPlan> createState() => _TrainerDietPlanState();
+  State<TrainerDietPlan> createState() => _TrainerDietPlanState(keywords);
 }
 
 class _TrainerDietPlanState extends State<TrainerDietPlan> {
   List<Meal> addMeal = [];
-
+  List<Keyword> keywords;
+_TrainerDietPlanState(this.keywords);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +48,7 @@ class _TrainerDietPlanState extends State<TrainerDietPlan> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: Colors.black),
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
                     child: Text(
                       'Add Food Items',
                       style: TextStyle(
@@ -71,7 +75,7 @@ class _TrainerDietPlanState extends State<TrainerDietPlan> {
                     },
                   ),
                   ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: Colors.black),
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
                     onPressed: () async {
                       MyDietPlan = DietPlan(1, DateTime.now(), 'Diet Plan');
                       for (Meal item in addMeal) {
@@ -79,8 +83,10 @@ class _TrainerDietPlanState extends State<TrainerDietPlan> {
                             Meal(item.item, item.quantity, item.time));
                       }
 
-                      await storeDietPlan(context, MyDietPlan);
-
+                      int id = await storeDietPlan(context, MyDietPlan);
+                      if (id!=-1){
+                        insertDietKeywords(keywords, id);
+                      }
                       Fluttertoast.showToast(
                         msg: "Plan Saved!",
                         toastLength: Toast.LENGTH_SHORT, // or Toast.LENGTH_LONG

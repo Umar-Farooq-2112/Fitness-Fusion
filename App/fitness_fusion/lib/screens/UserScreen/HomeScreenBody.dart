@@ -24,7 +24,7 @@ class homeScreenBodyState extends State<homeScreenBody> {
   @override
   Widget build(BuildContext context) {
     var weightString = '$weight kg';
-    var heightString = '$heightFt ft $heightInch inches';
+    var heightString = '$heightFt ft ${heightInch.toStringAsFixed(2)} inches';
 
     var height = (((heightFt * 12) + heightInch) * 0.0254);
     var BMI = (weight / (height * height)).toStringAsFixed(1);

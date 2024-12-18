@@ -7,7 +7,7 @@ import 'package:fitness_fusion/dataclass/createDialog.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-Future<void> storeWorkoutPlan(BuildContext context, WorkoutPlan input) async {
+Future<int> storeWorkoutPlan(BuildContext context, WorkoutPlan input) async {
   Map<String, dynamic> tempBody = {
     "user_id": MyUser.user_id,
     "name": input.name,
@@ -31,7 +31,7 @@ Future<void> storeWorkoutPlan(BuildContext context, WorkoutPlan input) async {
       }
     } else {
       createDialog(context, "Unable to save workout plan");
-      return;
+      return -1;
     }
     int n = input.days;
 
@@ -51,6 +51,8 @@ Future<void> storeWorkoutPlan(BuildContext context, WorkoutPlan input) async {
     }
   } catch (e) {
     createDialog(context, "Error: $e");
+    return -1;
   }
+  return MyWorkoutPlan.id;
 }
 

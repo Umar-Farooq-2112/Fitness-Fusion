@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:fitness_fusion/dataclass/Exercises.dart';
 import 'package:fitness_fusion/screens/Adminscreen/mywidgets.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +20,8 @@ class _AddExerciseState extends State<AddExercise> {
 
   late String _name;
   late String _description;
-  // ignore: unused_field
+  late Uint8List _gifData;
+
   late String _gifPath;
   late String _bodyPart = "1";
   late String _bodyDomain = "1";
@@ -140,7 +144,7 @@ class _AddExerciseState extends State<AddExercise> {
                             _isPush = value;
                           });
                         }),
-                      Padding(
+                    Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: DropdownButtonFormField<String>(
                         decoration: const InputDecoration(
@@ -148,7 +152,8 @@ class _AddExerciseState extends State<AddExercise> {
                             border: OutlineInputBorder()),
                         value: _bodyDomain,
                         items: const [
-                          DropdownMenuItem(value: '1', child: Text('Bodyweight')),
+                          DropdownMenuItem(
+                              value: '1', child: Text('Bodyweight')),
                           DropdownMenuItem(value: '2', child: Text('Dumbbell')),
                           DropdownMenuItem(value: '3', child: Text('Barbell')),
                           DropdownMenuItem(value: '4', child: Text('Machine'))
@@ -194,14 +199,25 @@ class _AddExerciseState extends State<AddExercise> {
                 type: FileType.custom,
                 allowedExtensions: ['gif'],
               );
+                print("HEllooo4");
+                print("HEllooo4");
+                print("HEllooo4");
 
               if (result != null) {
+                print("HEllooo");
+                print("HEllooo");
+                print("HEllooo");
+                String filePath = result.files.single.path!;
+                File gifFile = File(filePath);
+                Uint8List gifBytes = await gifFile.readAsBytes();
+                print("Gid Loaded Successfully:  ${result.files.single.path}");
                 setState(() {
-                  _gifPath = result.files.single.path!;
+                  _gifData = gifBytes; // Store the file bytes
                 });
               }
             }));
   }
+
 
   Widget buildTextFormField({
     required String label,
@@ -264,9 +280,8 @@ class _AddExerciseState extends State<AddExercise> {
       // File file = File(_gifPath); // Replace with the actual path to your file
       // createDialog(context, "Added");
       // var contents = await file.readAsBytes();
-      
-      // file = Image.
 
+      // file = Image.
 
       Navigator.pop(context); // Close the form after saving
     }

@@ -1,30 +1,37 @@
 import 'package:fitness_fusion/database/WorkoutRetrieval.dart';
+import 'package:fitness_fusion/database/keywordsPlan.dart';
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
+import 'package:fitness_fusion/dataclass/Keyword.dart';
 import 'package:fitness_fusion/screens/TrainerScreen/WorkoutAddItemsDaysWise.dart';
 import 'package:flutter/material.dart';
 
-Widget createWorkoutDayWisePlan(BuildContext context, String noOfDays) {
+Widget createWorkoutDayWisePlan(
+    BuildContext context, String noOfDays, List<Keyword> KeywordsList) {
   return Scaffold(
     appBar: AppBar(
-      backgroundColor: Colors.black,
+        backgroundColor: Colors.black,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        ElevatedButton(
-           style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(Colors.black)),
-          onPressed: () async {
-            await storeWorkoutPlan(context,MyWorkoutPlan);
-          },
-          child: Text(
-            'Save',
-            style: TextStyle(
-              color: Colors.white,
+          children: [
+            ElevatedButton(
+              style: ButtonStyle(
+                  backgroundColor:
+                      WidgetStateProperty.all<Color>(Colors.black)),
+              onPressed: () async {
+                int w_id = await storeWorkoutPlan(context, MyWorkoutPlan);
+                if (w_id!=-1) {
+                  await insertWorkoutKeywords(KeywordsList, w_id);
+                }
+              },
+              child: Text(
+                'Save',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
             ),
-          ),
-        ),
-      ],
-    )),
+          ],
+        )),
     body: Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(

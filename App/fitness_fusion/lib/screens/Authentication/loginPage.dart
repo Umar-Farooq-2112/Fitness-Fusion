@@ -1,4 +1,5 @@
 import 'package:fitness_fusion/database/DataRetrival.dart';
+import 'package:fitness_fusion/database/assignPlans.dart';
 import 'package:fitness_fusion/database/keywordsManagement.dart';
 import 'package:fitness_fusion/database/login.dart';
 import 'package:fitness_fusion/database/requestTrainer.dart';
@@ -8,6 +9,7 @@ import 'package:fitness_fusion/database/retrieveWorkoutPlan.dart';
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
 import 'package:fitness_fusion/dataclass/createDialog.dart';
 import 'package:fitness_fusion/screens/Adminscreen/adminscreen.dart';
+import 'package:fitness_fusion/screens/Authentication/KeywordsPage.dart';
 import 'package:fitness_fusion/screens/Authentication/TrainerRequest.dart';
 import 'package:fitness_fusion/screens/Authentication/signuppage.dart';
 import 'package:fitness_fusion/screens/TrainerScreen/Trainerwindow.dart';
@@ -116,12 +118,18 @@ class _LoginPageState extends State<LoginPage> {
                                   await retrieveKeywords(context);
 
                                   if (MyUser.type == "Trainee") {
+                                    bool st=await validateUserPlan(MyUser.user_id);
+
+                                    if (!st){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => KeywordSelectionPage()));
+                                    }
+
                                     MyDietPlan = await retrieveDietPlan(
                                         context, MyUser.user_id);
                                     MyWorkoutPlan = await retriveWorkoutPlan(
                                         context, MyUser.user_id);
                                     Navigator.pushReplacement(
-                                      context, // Use the stored context
+                                      context, 
                                       MaterialPageRoute(
                                           builder: (context) => HomeScreen()),
                                     );

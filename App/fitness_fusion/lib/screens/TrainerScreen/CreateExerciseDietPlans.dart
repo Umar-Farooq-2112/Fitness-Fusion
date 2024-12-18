@@ -14,12 +14,13 @@ class CreateExerciseDietPlans extends StatefulWidget {
 
   @override
   _CreateExerciseDietPlansState createState() =>
-      _CreateExerciseDietPlansState(selectedValue);
+      _CreateExerciseDietPlansState(selectedValue,KeywordsList);
 }
 
 class _CreateExerciseDietPlansState extends State<CreateExerciseDietPlans> {
   String selectedValue = '';
-  _CreateExerciseDietPlansState(this.selectedValue);
+  List<Keyword> KeywordsList;
+  _CreateExerciseDietPlansState(this.selectedValue,this.KeywordsList);
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +49,10 @@ class _CreateExerciseDietPlansState extends State<CreateExerciseDietPlans> {
           body: TabBarView(
             children: [
               Center(
-                child: createWorkoutDayWisePlan(context, selectedValue)
+                child: createWorkoutDayWisePlan(context, selectedValue,KeywordsList)
                 ),
               Center(
-                child: TrainerDietPlan(),
+                child: TrainerDietPlan(KeywordsList),
               ),
             ],
           ),

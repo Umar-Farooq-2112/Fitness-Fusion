@@ -1,4 +1,5 @@
 // import 'package:fitness_fusion/screens/splashpage.dart';
+// import 'package:fitness_fusion/screens/Authenticatioaaaaaaaaaaaaaaaaaaaaaan/KeywordsPage.dart';
 import 'package:fitness_fusion/screens/Authentication/splashpage.dart';
 import 'package:flutter/material.dart';
 
@@ -11,10 +12,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Login Page',
+      title: 'FitnessFusion',
       home: SplashPage(),
     );
+
+    
   }
+
 }

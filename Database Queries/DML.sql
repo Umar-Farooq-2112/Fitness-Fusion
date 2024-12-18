@@ -57,6 +57,13 @@ INSERT INTO User_authentication VALUES
 ('mok', 2, 'pass', 2),
 ('temp', 3 , 'pass', 3);
 
+INSERT INTO keywords VALUES
+(1,"Fat loss"),
+(2,"Muscle Gain"),
+(3,"Bulking"),
+(4,"Shredding"),
+(5,"Weight Loss");
+
 
 INSERT INTO User_info VALUES
 (1,'Admin','M',177.8,52,'2003-12-21','Admin@gmail.com','987654321'),
