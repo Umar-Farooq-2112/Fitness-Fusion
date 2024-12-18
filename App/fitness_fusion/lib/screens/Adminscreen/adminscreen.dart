@@ -81,13 +81,13 @@ Widget homeScreenBody(BuildContext context, double screenWidth) {
           child: buildCalendarBlock(),
         ),
       ),
-      Expanded(
-        flex: 3,
-        child: Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: buildCurrentPlansBlock(screenWidth, context),
-        ),
-      ),
+      // Expanded(
+      //   flex: 3,
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(4.0),
+      //     child: buildCurrentPlansBlock(screenWidth, context),
+      //   ),
+      // ),
       Expanded(
         flex: 3,
         child: Padding(

@@ -67,8 +67,8 @@ INSERT INTO keywords VALUES
 
 INSERT INTO User_info VALUES
 (1,'Admin','M',177.8,52,'2003-12-21','Admin@gmail.com','987654321'),
-(2,'Muhammad Owais Khan','M',175.8,60,'2003-08-14','mok@gmail.com','123456789'),
-(3,'temp','M',170.8,60,'2004-11-23','','000011112222');
+(2,'Muhammad Owais Khan','M',175.8,60,'2003-08-14','mok@gmail.com','123456789');
+-- (3,'temp','M',170.8,60,'2004-11-23','','000011112222');
 
 
 INSERT INTO Requests VALUES
