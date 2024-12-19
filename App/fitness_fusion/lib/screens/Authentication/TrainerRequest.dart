@@ -1,5 +1,6 @@
 import 'package:fitness_fusion/database/UserRegistation.dart';
 import 'package:fitness_fusion/database/requestTrainer.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:fitness_fusion/dataclass/User.dart';
 import 'package:fitness_fusion/dataclass/createDialog.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,7 @@ class _TrainerRequestState extends State<TrainerRequest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ThemeColors.primary,
       appBar: AppBar(
         title: const Text('FitnessFusion'),
       ),
@@ -55,12 +57,13 @@ class _TrainerRequestState extends State<TrainerRequest> {
                 Container(
                   margin: EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: TextStyle(color: ThemeColors.loginTextFieldFont),
                     controller: _usernameController,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Color.fromARGB(255, 62, 192, 224))),
-                        border: UnderlineInputBorder(),
+                        border: const UnderlineInputBorder(),
                         labelText: 'Username'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -73,12 +76,13 @@ class _TrainerRequestState extends State<TrainerRequest> {
                 Container(
                   margin: EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: TextStyle(color: ThemeColors.loginTextFieldFont),
                     obscureText: view,
                     controller: _password1Controller,
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color.fromARGB(255, 62, 192, 224),
+                          color: ThemeColors.loginTextFieldFont,
                         ),
                       ),
                       border: UnderlineInputBorder(),
@@ -104,12 +108,13 @@ class _TrainerRequestState extends State<TrainerRequest> {
                 Container(
                   margin: EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: TextStyle(color: ThemeColors.loginTextFieldFont),
                     obscureText: view,
                     controller: _password2Controller,
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color.fromARGB(255, 62, 192, 224),
+                          color: ThemeColors.loginTextFieldFont,
                         ),
                       ),
                       border: UnderlineInputBorder(),
@@ -135,12 +140,13 @@ class _TrainerRequestState extends State<TrainerRequest> {
                 Container(
                   margin: EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: TextStyle(color: ThemeColors.loginTextFieldFont),
                     controller: _nameController,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Color.fromARGB(255, 62, 192, 224))),
-                        border: UnderlineInputBorder(),
+                        border: const UnderlineInputBorder(),
                         labelText: 'Name'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -153,6 +159,7 @@ class _TrainerRequestState extends State<TrainerRequest> {
                 Container(
                   margin: EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: TextStyle(color: ThemeColors.loginTextFieldFont),
                     controller: _dobController,
                     readOnly: true,
                     onTap: () async {
@@ -173,11 +180,11 @@ class _TrainerRequestState extends State<TrainerRequest> {
                         });
                       }
                     },
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Color.fromARGB(255, 62, 192, 224))),
-                        border: UnderlineInputBorder(),
+                        border: const UnderlineInputBorder(),
                         labelText: 'Date of Birth'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -190,12 +197,13 @@ class _TrainerRequestState extends State<TrainerRequest> {
                 Container(
                   margin: EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: TextStyle(color: ThemeColors.loginTextFieldFont),
                     controller: _heightController,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Color.fromARGB(255, 62, 192, 224))),
-                        border: UnderlineInputBorder(),
+                        border: const UnderlineInputBorder(),
                         labelText: 'Height (cm)'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -208,12 +216,13 @@ class _TrainerRequestState extends State<TrainerRequest> {
                 Container(
                   margin: EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: TextStyle(color: ThemeColors.loginTextFieldFont),
                     controller: _weightController,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Color.fromARGB(255, 62, 192, 224))),
-                        border: UnderlineInputBorder(),
+                        border: const UnderlineInputBorder(),
                         labelText: 'Weight (KG)'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -229,11 +238,19 @@ class _TrainerRequestState extends State<TrainerRequest> {
                     borderRadius:
                         const BorderRadius.all(Radius.elliptical(1, 1)),
                     value: _selectedGender,
-                    hint: const Text('Gender'),
+                    hint: Text(
+                      'Gender',
+                      style:
+                          TextStyle(color: Colors.grey),
+                    ),
                     items: ['Male', 'Female'].map((String gender) {
                       return DropdownMenuItem<String>(
                         value: gender,
-                        child: Text(gender),
+                        child: Text(
+                          gender,
+                          style:
+                              TextStyle(color: ThemeColors.loginTextFieldFont),
+                        ),
                       );
                     }).toList(),
                     onChanged: (String? value) {
@@ -252,12 +269,13 @@ class _TrainerRequestState extends State<TrainerRequest> {
                 Container(
                   margin: EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: TextStyle(color: ThemeColors.loginTextFieldFont),
                     controller: _emailController,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Color.fromARGB(255, 62, 192, 224))),
-                        border: UnderlineInputBorder(),
+                        border: const UnderlineInputBorder(),
                         labelText: 'Email'),
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) {
@@ -273,12 +291,13 @@ class _TrainerRequestState extends State<TrainerRequest> {
                 Container(
                   margin: EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: TextStyle(color: ThemeColors.loginTextFieldFont),
                     controller: _phoneController,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Color.fromARGB(255, 62, 192, 224))),
-                        border: UnderlineInputBorder(),
+                        border: const UnderlineInputBorder(),
                         labelText: 'Phone Number'),
                     keyboardType: TextInputType.phone,
                     validator: (value) {
@@ -291,7 +310,12 @@ class _TrainerRequestState extends State<TrainerRequest> {
                 ),
                 Container(
                   margin: EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          width: 2, color: ThemeColors.loginTextFieldFont)),
                   child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: ThemeColors.primary),
                     onPressed: () async {
                       if (_usernameController.text.isNotEmpty &&
                           _password1Controller.text.isNotEmpty &&
@@ -343,15 +367,11 @@ class _TrainerRequestState extends State<TrainerRequest> {
                                   _emailController.text,
                                   _phoneController.text);
 
-                              if (await requestTrainer(
-                                  context, input)) {
-                                    Navigator.of(context).pop();
-                                createDialog(context,
-                                    "Request Added");
-                                    
+                              if (await requestTrainer(context, input)) {
+                                Navigator.of(context).pop();
+                                createDialog(context, "Request Added");
                               } else {
-                                createDialog(
-                                    context, "Unable to Request");
+                                createDialog(context, "Unable to Request");
                               }
                             }
                           }
@@ -360,7 +380,10 @@ class _TrainerRequestState extends State<TrainerRequest> {
                         createDialog(context, "All fields must be filled");
                       }
                     },
-                    child: const Text('Sign Up'),
+                    child: Text(
+                      'Sign Up',
+                      style: TextStyle(color: ThemeColors.loginTextFieldFont),
+                    ),
                   ),
                 ),
               ]),

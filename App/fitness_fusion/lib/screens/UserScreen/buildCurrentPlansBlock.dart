@@ -1,4 +1,5 @@
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:flutter/material.dart';
 import 'currentExercisePlan.dart';
 import 'currentDietPlan.dart';
@@ -7,7 +8,7 @@ import 'currentDietPlan.dart';
 
 Widget buildCurrentPlansBlock(double screenWidth, BuildContext context) {
   return Container(
-    //color: Color.fromARGB(255, 170, 184, 196),
+    color: ThemeColors.primary,
     child: Padding(
       padding: const EdgeInsets.all(10.0),
       child: Center(
@@ -36,29 +37,22 @@ Widget buildCurrentPlansBlock(double screenWidth, BuildContext context) {
                       // color: Color.fromARGB(255, 239, 234, 221),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0),
+                        side: BorderSide(
+                          color: ThemeColors.homescreenfont
+                        )
                       ),
                       elevation: 10,
                       child: Container(
                         clipBehavior: Clip.antiAlias,
                         decoration: BoxDecoration(
+                          color: ThemeColors.primary,
                           borderRadius: BorderRadius.circular(15.0),
-                          gradient: LinearGradient(
-                            colors: [
-                              Color(0xff15e3dc),
-                              Color(0xff2987cc),
-                              Color(0xff1839de),
-                              Color(0xff2987cc),
-                              Color(0xff15e3dc),
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
                         ),
                         child: Center(
                           child: Text(
                             'Your Workout Plan',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: ThemeColors.homescreenfont,
                             ),
                           ),
                         ),
@@ -83,29 +77,22 @@ Widget buildCurrentPlansBlock(double screenWidth, BuildContext context) {
                     child: Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0),
+                        side: BorderSide(
+                          color: ThemeColors.homescreenfont
+                        )
                       ),
                       elevation: 10,
                       child: Container(
                         clipBehavior: Clip.antiAlias,
                         decoration: BoxDecoration(
+                          color: ThemeColors.primary,
                           borderRadius: BorderRadius.circular(15.0),
-                          gradient: LinearGradient(
-                            colors: [
-                              Color(0xff15e3dc),
-                              Color(0xff2987cc),
-                              Color(0xff1839de),
-                              Color(0xff2987cc),
-                              Color(0xff15e3dc),
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
                         ),
                         child: Center(
                           child: Text(
                             'Your Diet Plan',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: ThemeColors.homescreenfont,
                             ),
                           ),
                         ),

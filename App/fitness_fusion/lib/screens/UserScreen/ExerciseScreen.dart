@@ -1,4 +1,5 @@
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:flutter/material.dart';
 import 'bodyPartWiseExerciseFunctions.dart';
 
@@ -8,22 +9,23 @@ class exerciseScreenBody extends StatelessWidget {
     return DefaultTabController(
       length: 6,
       child: Scaffold(
+        backgroundColor: ThemeColors.primary,
         appBar: AppBar(
-          backgroundColor: Colors.black,
+          backgroundColor: ThemeColors.primary,
           title: Center(
             child: Text(
               'Exercises',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: ThemeColors.font1,
                 letterSpacing: 1.0,
               ),
             ),
           ),
           bottom: TabBar(
             isScrollable: true,
-            labelColor: Colors.white,
-            unselectedLabelColor: Colors.grey,
+            labelColor: ThemeColors.exerciseScreenFont,
+            unselectedLabelColor: ThemeColors.exerciseScreenFont2,
             tabs: [
               Tab(
                 text: 'Chest',

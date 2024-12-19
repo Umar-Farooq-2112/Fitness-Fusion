@@ -1,6 +1,7 @@
 import 'package:fitness_fusion/database/requestTrainer.dart';
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
 import 'package:fitness_fusion/dataclass/Plan.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:fitness_fusion/dataclass/User.dart';
 import 'package:fitness_fusion/screens/Adminscreen/mywidgets.dart';
 import 'package:flutter/material.dart';
@@ -21,44 +22,65 @@ class ApprovalCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(8.0),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Name: ${approval.name}',
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8.0),
-            Text('Date Of Birth: ${getStringDate(approval.date_of_birth)}'),
-            const SizedBox(height: 8.0),
-            Text('Contacts Info: ${approval.contact} / ${approval.email}'),
-            const SizedBox(height: 16.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    onApprove();
-                  },
-                  child: const Text('Approve'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    onReject();
-                  },
-                  style: ButtonStyle(
-                    backgroundColor:
-                        WidgetStateProperty.all<Color>(Colors.red),
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: ThemeColors.homescreenfont,
+          width: 3
+        )
+      ),
+      child: Card(
+        color: ThemeColors.primary,
+        margin: const EdgeInsets.all(8.0),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Name: ${approval.name}',
+                style: TextStyle(fontWeight: FontWeight.bold, color: ThemeColors.homescreenfont),
+              ),
+              const SizedBox(height: 8.0),
+              Text('Date Of Birth: ${getStringDate(approval.date_of_birth)}',style: TextStyle(color: ThemeColors.homescreenfont),),
+              const SizedBox(height: 8.0),
+              Text('Contacts Info: ${approval.contact} / ${approval.email}',style: TextStyle(color: ThemeColors.homescreenfont),),
+              const SizedBox(height: 16.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      side: WidgetStateProperty.all(BorderSide(
+                        color: ThemeColors.homescreenfont,
+                        width: 2
+                      )),
+                      backgroundColor:
+                          WidgetStateProperty.all<Color>(ThemeColors.primary),
+                    ),
+                    onPressed: () {
+                      onApprove();
+                    },
+                    child: Text('Approve',style: TextStyle(color: ThemeColors.homescreenfont),),
                   ),
-                  child: const Text('Reject'),
-                ),
-              ],
-            ),
-          ],
+                  ElevatedButton(
+                    onPressed: () {
+                      onReject();
+                    },
+                    style: ButtonStyle(
+                      side: WidgetStateProperty.all(BorderSide(
+                        color: ThemeColors.homescreenfont,
+                        width: 2
+                      )),
+                      backgroundColor:
+                          WidgetStateProperty.all<Color>(ThemeColors.primary),
+                    ),
+                    child: Text('Reject',style: TextStyle(color: ThemeColors.homescreenfont),),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -79,6 +101,7 @@ class _ApprovalListState extends State<ApprovalList> {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: ThemeColors.primary,
         appBar: buildAppBar(screenHeight, screenWidth),
         body: ListView.builder(
           itemCount: Requests.length,

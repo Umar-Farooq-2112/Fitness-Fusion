@@ -1,5 +1,6 @@
 import 'package:fitness_fusion/dataclass/Exercises.dart';
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:fitness_fusion/screens/UserScreen/buildAppBar.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,6 @@ class DisplayExercisesAndSetsForPlan extends StatefulWidget {
 
 class _DisplayExercisesAndSetsForPlanState
     extends State<DisplayExercisesAndSetsForPlan> {
-
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -21,11 +21,13 @@ class _DisplayExercisesAndSetsForPlanState
       body: DefaultTabController(
         length: 6,
         child: Scaffold(
+          backgroundColor: ThemeColors.primary,
           appBar: AppBar(
+            backgroundColor: ThemeColors.primary,
             bottom: TabBar(
               isScrollable: true,
-              labelColor: Colors.white,
-              unselectedLabelColor: Colors.grey,
+              labelColor: ThemeColors.homescreenfont,
+              unselectedLabelColor: ThemeColors.homescreenfont2,
               tabs: [
                 Tab(
                   text: 'Chest',
@@ -71,7 +73,7 @@ class _DisplayExercisesAndSetsForPlanState
             ],
           ),
         ),
-          ),
+      ),
     );
   }
 
@@ -84,21 +86,23 @@ class _DisplayExercisesAndSetsForPlanState
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Enter Number of Sets'),
+          backgroundColor: ThemeColors.primary,
+          title: Text('Enter Number of Sets',style: TextStyle(color: ThemeColors.homescreenfont),),
           content: TextField(
+            style: TextStyle(color: ThemeColors.homescreenfont),
             controller: setsController,
             keyboardType: TextInputType.number,
             decoration: InputDecoration(labelText: 'Sets'),
           ),
           actions: <Widget>[
             TextButton(
-              child: Text('Cancel'),
+              child: Text('Cancel',style: TextStyle(color: ThemeColors.homescreenfont),),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text('OK'),
+              child: Text('OK',style: TextStyle(color: ThemeColors.homescreenfont),),
               onPressed: () {
                 int enteredSets = int.tryParse(setsController.text) ?? 0;
                 if (enteredSets > 0) {
@@ -109,6 +113,7 @@ class _DisplayExercisesAndSetsForPlanState
                     SnackBar(
                       content: Text(
                         'Invalid input. Sets must be greater than 0.',
+                        style: TextStyle(color: ThemeColors.homescreenfont),
                       ),
                     ),
                   );
@@ -123,41 +128,42 @@ class _DisplayExercisesAndSetsForPlanState
 
   Widget ChooseExercise(List<Exercises> exercises) {
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Color(0xfff173e8),
-            Color(0xff17e8e8),
-          ],
-        ),
-      ),
+      color: ThemeColors.primary,
       child: ListView.separated(
         itemBuilder: (context, index) {
-          return Card(
-            elevation: 30,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0)),
-            child: ListTile(
-              tileColor: Colors.black,
+          return Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                width: 2,
+                color: ThemeColors.homescreenfont
+              )
+            ),
+            child: Card(
+              elevation: 30,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0)),
-              title: Text(
-                exercises[index].name,
-                style: TextStyle(
-                  color: Colors.white,
+              child: ListTile(
+                tileColor: ThemeColors.primary,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0)),
+                title: Text(
+                  exercises[index].name,
+                  style: TextStyle(
+                    color: ThemeColors.homescreenfont,
+                  ),
                 ),
+                trailing: exercises[index].image,
+                onTap: () async {
+                  int? enteredSets = await _showInputDialog(context);
+                  if (enteredSets != null) {
+                    // Use enteredSets as needed
+                    Exercises selectedExercise = exercises[index];
+                    // Pass the selected exercise and entered sets back to the calling widget
+                    Navigator.of(context)
+                        .pop({'exercise': selectedExercise, 'sets': enteredSets});
+                  }
+                },
               ),
-              trailing: exercises[index].image,
-              onTap: () async {
-                int? enteredSets = await _showInputDialog(context);
-                if (enteredSets != null) {
-                  // Use enteredSets as needed
-                  Exercises selectedExercise = exercises[index];
-                  // Pass the selected exercise and entered sets back to the calling widget
-                  Navigator.of(context)
-                      .pop({'exercise': selectedExercise, 'sets': enteredSets});
-                }
-              },
             ),
           );
         },
@@ -168,5 +174,4 @@ class _DisplayExercisesAndSetsForPlanState
       ),
     );
   }
-
 }

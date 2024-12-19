@@ -1,4 +1,5 @@
 import 'package:fitness_fusion/dataclass/Exercises.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:flutter/material.dart';
 import 'buildAppBar.dart';
 
@@ -15,14 +16,7 @@ class SingleExerciseItemScreen extends StatelessWidget {
     return Scaffold(
       appBar: buildAppBar(screenHeight, screenWidth),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xfff173e8),
-              Color(0xff17e8e8),
-            ],
-          ),
-        ),
+        color: ThemeColors.primary,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -38,14 +32,14 @@ class SingleExerciseItemScreen extends StatelessWidget {
                   item.name,
                   style: TextStyle(
                     fontSize: screenHeight * 0.05,
-                    color: Colors.black,
+                    color: ThemeColors.exerciseScreenFont,
                   ),
                 ),
               ),
               subtitle: Text(item.description,
               maxLines: 10,
               style: TextStyle(
-                color: Colors.black,
+                color: ThemeColors.exerciseScreenFont2,
                 fontSize: 15,
               ),),
             ),

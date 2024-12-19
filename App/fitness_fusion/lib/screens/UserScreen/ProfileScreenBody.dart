@@ -1,5 +1,6 @@
 import 'package:fitness_fusion/database/profileOptions.dart';
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'CalculateBMIScreen.dart';
@@ -25,12 +26,12 @@ class profileScreenBodyState extends State<profileScreenBody> {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor:ThemeColors.primary,
         title: Center(
           child: Text(
             'Settings',
             style: TextStyle(
-              color: Colors.white,
+              color: ThemeColors.profilescreenfont,
               fontWeight: FontWeight.bold,
               letterSpacing: 1.0,
             ),
@@ -38,14 +39,7 @@ class profileScreenBodyState extends State<profileScreenBody> {
         ),
       ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xfff173e8),
-              Color(0xff17e8e8),
-            ],
-          ),
-        ),
+        color: ThemeColors.primary,
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Container(
@@ -66,14 +60,14 @@ class profileScreenBodyState extends State<profileScreenBody> {
                       title: Text(
                         'Change Name',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: ThemeColors.profilescreenfont,
                           fontSize: 20.0,
                         ),
                       ),
                       trailing: InkWell(
                         child: FaIcon(
                           FontAwesomeIcons.solidPenToSquare,
-                          color: Colors.white,
+                          color: ThemeColors.profilescreenfont,
                         ),
                         onTap: () {
                           changeName(context, screenWidth);
@@ -92,18 +86,18 @@ class profileScreenBodyState extends State<profileScreenBody> {
                     child: ListTile(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0)),
-                      tileColor: Colors.black,
+                      tileColor: ThemeColors.primary,
                       title: Text(
                         'Change Password',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: ThemeColors.profilescreenfont,
                           fontSize: 20,
                         ),
                       ),
                       trailing: InkWell(
                         child: FaIcon(
                           FontAwesomeIcons.solidPenToSquare,
-                          color: Colors.white,
+                          color: ThemeColors.profilescreenfont,
                         ),
                         onTap: () {
                           changePassword(context, screenWidth);
@@ -122,18 +116,18 @@ class profileScreenBodyState extends State<profileScreenBody> {
                     child: ListTile(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0)),
-                      tileColor: Colors.black,
+                      tileColor: ThemeColors.primary,
                       title: Text(
                         'Calculate BMI',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: ThemeColors.profilescreenfont,
                           fontSize: 20.0,
                         ),
                       ),
                       trailing: InkWell(
                         child: FaIcon(
                           FontAwesomeIcons.solidPenToSquare,
-                          color: Colors.white,
+                          color: ThemeColors.profilescreenfont,
                         ),
                         onTap: () {
                           Navigator.push(
@@ -159,14 +153,14 @@ class profileScreenBodyState extends State<profileScreenBody> {
                       title: Text(
                         'Submit Feedback',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: ThemeColors.profilescreenfont,
                           fontSize: 20.0,
                         ),
                       ),
                       trailing: InkWell(
                         child: FaIcon(
                           FontAwesomeIcons.solidPenToSquare,
-                          color: Colors.white,
+                          color: ThemeColors.profilescreenfont,
                         ),
                         onTap: () {
                           submitFeedBack(context, screenWidth);

@@ -1,4 +1,5 @@
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:flutter/material.dart';
 import 'buildWelcomeBlock.dart';
 import 'package:pretty_gauge/pretty_gauge.dart';
@@ -33,15 +34,8 @@ class homeScreenBodyState extends State<homeScreenBody> {
     double screenWidth = MediaQuery.of(context).size.width;
     // double screenHeight=MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: ThemeColors.primary,
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xfff173e8),
-              Color(0xff17e8e8),
-            ],
-          ),
-        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -64,10 +58,11 @@ class homeScreenBodyState extends State<homeScreenBody> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          const Text(
+                          Text(
                             'BMI',
                             style: TextStyle(
                               fontSize: 18.0,
+                              color: ThemeColors.homescreenfont
                             ),
                           ),
                           Row(
@@ -88,17 +83,18 @@ class homeScreenBodyState extends State<homeScreenBody> {
                                   BMI,
                                   style: TextStyle(
                                     fontSize: 10,
+                                    color: ThemeColors.homescreenfont
                                   ),
                                 ),
                                 currentValue: double.parse(BMI),
-                                needleColor: Colors.black,
+                                needleColor: ThemeColors.homescreenfont,
                               ),
                             ],
                           ),
                           Text(
                             bmiText!,
                             style:
-                            TextStyle(fontSize: 18, color: bmiTextColour!),
+                            TextStyle(fontSize: 18, color:ThemeColors.homescreenfont),
                           ),
                           Container(
                             margin: const EdgeInsets.all(10.0),
@@ -116,14 +112,14 @@ class homeScreenBodyState extends State<homeScreenBody> {
                                         Text(
                                           'Weight',
                                           style: TextStyle(
-                                            color: Colors.white,
+                                            color: ThemeColors.homescreenfont,
                                             fontSize: 20,
                                           ),
                                         ),
                                         Text(
                                           '$weightString',
                                           style: TextStyle(
-                                            color: Colors.white,
+                                            color: ThemeColors.homescreenfont,
                                           ),
                                         ),
                                       ],
@@ -133,14 +129,14 @@ class homeScreenBodyState extends State<homeScreenBody> {
                                         Text(
                                           'Height',
                                           style: TextStyle(
-                                            color: Colors.white,
+                                            color: ThemeColors.homescreenfont,
                                             fontSize: 20,
                                           ),
                                         ),
                                         Text(
                                           '$heightString',
                                           style: TextStyle(
-                                            color: Colors.white,
+                                            color: ThemeColors.homescreenfont,
                                           ),
                                         ),
                                       ],
@@ -150,7 +146,7 @@ class homeScreenBodyState extends State<homeScreenBody> {
                                 InkWell(
                                   child: FaIcon(
                                     FontAwesomeIcons.solidPenToSquare,
-                                    color: Colors.white,
+                                    color: ThemeColors.homescreenfont,
                                   ),
                                   onTap: () {
                                     setNewWeightHeight(context);
@@ -200,6 +196,7 @@ class homeScreenBodyState extends State<homeScreenBody> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          backgroundColor: ThemeColors.homescreenfont,
           contentPadding: EdgeInsets.all(8.0),
           scrollable: true,
           shape: RoundedRectangleBorder(
@@ -208,6 +205,7 @@ class homeScreenBodyState extends State<homeScreenBody> {
           title: Text(
             'BMI Calculator',
             style: TextStyle(
+              color: ThemeColors.homescreenfont,
               fontWeight: FontWeight.w200,
             ),
           ),

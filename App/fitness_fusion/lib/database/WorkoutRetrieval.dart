@@ -43,7 +43,6 @@ Future<int> storeWorkoutPlan(BuildContext context, WorkoutPlan input) async {
                 .getLink()));
 
         if (response2.statusCode == 200) {
-          createDialog(context, "Saved");
         } else {
           createDialog(context, "Error occured $i");
         }

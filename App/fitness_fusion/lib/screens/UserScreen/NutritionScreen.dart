@@ -1,16 +1,18 @@
 import 'package:fitness_fusion/dataclass/FoodItem.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:flutter/material.dart';
 import 'SingleFoodItemScreen.dart';
 
 Widget nutritionScreenBody(List<FoodItem> items) {
   return Scaffold(
+    backgroundColor: ThemeColors.primary,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor:  ThemeColors.primary,
         title: Center(
           child: Text(
             'Food Items',
             style: TextStyle(
-              color: Colors.white,
+              color:  ThemeColors.exerciseScreenFont,
               fontWeight: FontWeight.bold,
               letterSpacing: 1.0,
             ),
@@ -18,14 +20,6 @@ Widget nutritionScreenBody(List<FoodItem> items) {
         ),
       ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xfff173e8),
-              Color(0xff17e8e8),
-            ],
-          ),
-        ),
         height: double.infinity,
         child: ListView.separated(
           itemBuilder: (context, index) {
@@ -36,11 +30,11 @@ Widget nutritionScreenBody(List<FoodItem> items) {
               child: ListTile(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0)),
-                tileColor: Colors.black,
+                tileColor:  ThemeColors.primary,
                 title: Text(
                   items[index].name,
                   style: TextStyle(
-                    color: Colors.white,
+                    color:  ThemeColors.exerciseScreenFont,
                   ),
                 ),
                 trailing: items[index].image,

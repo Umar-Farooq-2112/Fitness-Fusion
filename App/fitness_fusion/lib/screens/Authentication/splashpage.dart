@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:fitness_fusion/screens/Authentication/loginPage.dart';
 import 'package:flutter/material.dart';
 
@@ -19,14 +20,14 @@ class _SplashPageState extends State<SplashPage> {
 
     return Scaffold(
       body: Container(
-        color: Colors.cyanAccent[400],
-        child: const Center(
+        color: ThemeColors.primary,
+        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 200,
                 width: 200,
                 child: CircleAvatar(
@@ -36,6 +37,7 @@ class _SplashPageState extends State<SplashPage> {
               Text(
                 " Fitfusion: Train hard, stay consistent, be patient",
                 style: TextStyle(
+                  color: ThemeColors.font4,
                   fontFamily: 'Welcome',
                   fontWeight: FontWeight.bold,
                   fontSize: 15,

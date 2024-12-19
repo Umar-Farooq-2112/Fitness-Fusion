@@ -1,3 +1,4 @@
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:flutter/material.dart';
 import 'CreatePlans.dart';
 
@@ -6,6 +7,7 @@ Widget buildCreatePlansBlock(double screenWidth, BuildContext context) {
     padding: const EdgeInsets.all(30.0),
     child: Center(
       child: Container(
+        color: ThemeColors.primary,
         height: double.infinity,
         width: double.infinity,
         child: Row(
@@ -26,32 +28,26 @@ Widget buildCreatePlansBlock(double screenWidth, BuildContext context) {
                 child: Container(
                   height: double.maxFinite,
                   child: Card(
-                    // color: Color.fromARGB(255, 239, 234, 221),
+                    color: ThemeColors.primary,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25.0),
+                      borderRadius: BorderRadius.circular(25.0)
                     ),
                     elevation: 30,
                     child: Container(
                       clipBehavior: Clip.antiAlias,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25.0),
-                        gradient: LinearGradient(
-                          colors: [
-                            Color(0xff15e3dc),
-                            Color(0xff2987cc),
-                            Color(0xff1839de),
-                            Color(0xff2987cc),
-                            Color(0xff15e3dc),
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
+                        border: Border.all(
+                      color: ThemeColors.homescreenfont,
+                      width: 3
+                          
+                        )
                       ),
                       child: Center(
                         child: Text(
                           'Create New Plan',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: ThemeColors.homescreenfont,
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 2.0,

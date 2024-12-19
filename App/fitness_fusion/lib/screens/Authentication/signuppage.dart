@@ -1,5 +1,6 @@
 import 'package:fitness_fusion/database/UserRegistation.dart';
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:fitness_fusion/dataclass/User.dart';
 import 'package:fitness_fusion/dataclass/createDialog.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,7 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ThemeColors.primary,
       appBar: AppBar(
         title: const Text('FitnessFusion'),
       ),
@@ -55,6 +57,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 Container(
                   margin: EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: TextStyle(
+                      color: ThemeColors
+                          .loginTextFieldFont, // Change text color here
+                    ),
                     controller: _usernameController,
                     decoration: const InputDecoration(
                         focusedBorder: OutlineInputBorder(
@@ -73,6 +79,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 Container(
                   margin: EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: TextStyle(
+                      color: ThemeColors
+                          .loginTextFieldFont, // Change text color here
+                    ),
                     obscureText: view,
                     controller: _password1Controller,
                     decoration: InputDecoration(
@@ -104,6 +114,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 Container(
                   margin: EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: TextStyle(
+                      color: ThemeColors
+                          .loginTextFieldFont, // Change text color here
+                    ),
                     obscureText: view,
                     controller: _password2Controller,
                     decoration: InputDecoration(
@@ -135,6 +149,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 Container(
                   margin: EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: TextStyle(
+                      color: ThemeColors
+                          .loginTextFieldFont, // Change text color here
+                    ),
                     controller: _nameController,
                     decoration: const InputDecoration(
                         focusedBorder: OutlineInputBorder(
@@ -153,6 +171,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 Container(
                   margin: EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: TextStyle(
+                      color: ThemeColors
+                          .loginTextFieldFont, // Change text color here
+                    ),
                     controller: _dobController,
                     readOnly: true,
                     onTap: () async {
@@ -190,6 +212,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 Container(
                   margin: EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: TextStyle(
+                      color: ThemeColors
+                          .loginTextFieldFont, // Change text color here
+                    ),
                     controller: _heightController,
                     decoration: const InputDecoration(
                         focusedBorder: OutlineInputBorder(
@@ -208,6 +234,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 Container(
                   margin: EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: TextStyle(
+                      color: ThemeColors
+                          .loginTextFieldFont, // Change text color here
+                    ),
                     controller: _weightController,
                     decoration: const InputDecoration(
                         focusedBorder: OutlineInputBorder(
@@ -229,11 +259,18 @@ class _SignUpPageState extends State<SignUpPage> {
                     borderRadius:
                         const BorderRadius.all(Radius.elliptical(1, 1)),
                     value: _selectedGender,
-                    hint: const Text('Gender'),
+                    hint: Text(
+                      'Gender',
+                      style: TextStyle(color: Colors.grey),
+                    ),
                     items: ['Male', 'Female'].map((String gender) {
                       return DropdownMenuItem<String>(
                         value: gender,
-                        child: Text(gender),
+                        child: Text(
+                          gender,
+                          style:
+                              TextStyle(color: ThemeColors.loginTextFieldFont),
+                        ),
                       );
                     }).toList(),
                     onChanged: (String? value) {
@@ -252,6 +289,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 Container(
                   margin: EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: TextStyle(
+                      color: ThemeColors
+                          .loginTextFieldFont, // Change text color here
+                    ),
                     controller: _emailController,
                     decoration: const InputDecoration(
                         focusedBorder: OutlineInputBorder(
@@ -273,6 +314,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 Container(
                   margin: EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: TextStyle(
+                      color: ThemeColors
+                          .loginTextFieldFont, // Change text color here
+                    ),
                     controller: _phoneController,
                     decoration: const InputDecoration(
                         focusedBorder: OutlineInputBorder(
@@ -363,7 +408,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                 createDialog(
                                     context, "Registration Successfull");
 
-                                    Navigator.of(context).pop();
+                                Navigator.of(context).pop();
                               } else {
                                 createDialog(
                                     context, "Unable to register new user");
@@ -375,7 +420,14 @@ class _SignUpPageState extends State<SignUpPage> {
                         createDialog(context, "All fields must be filled");
                       }
                     },
-                    child: const Text('Sign Up'),
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStateProperty.all(ThemeColors
+                          .loginButtonColors), // Set background color here
+                    ),
+                    child: Text(
+                      'Sign Up',
+                      style: TextStyle(color: ThemeColors.loginFont),
+                    ),
                   ),
                 ),
               ]),

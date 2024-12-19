@@ -2,72 +2,78 @@ import 'package:fitness_fusion/database/WorkoutRetrieval.dart';
 import 'package:fitness_fusion/database/keywordsPlan.dart';
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
 import 'package:fitness_fusion/dataclass/Keyword.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:fitness_fusion/screens/TrainerScreen/WorkoutAddItemsDaysWise.dart';
 import 'package:flutter/material.dart';
 
 Widget createWorkoutDayWisePlan(
     BuildContext context, String noOfDays, List<Keyword> KeywordsList) {
   return Scaffold(
+    backgroundColor: ThemeColors.primary,
     appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: ThemeColors.primary,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             ElevatedButton(
               style: ButtonStyle(
+                  side: WidgetStateProperty.all(
+                    BorderSide(
+                        color: ThemeColors.homescreenfont,
+                        width: 2), // Border color and width
+                  ),
                   backgroundColor:
-                      WidgetStateProperty.all<Color>(Colors.black)),
+                      WidgetStateProperty.all<Color>(ThemeColors.primary)),
               onPressed: () async {
                 int w_id = await storeWorkoutPlan(context, MyWorkoutPlan);
-                if (w_id!=-1) {
+                if (w_id != -1) {
                   await insertWorkoutKeywords(KeywordsList, w_id);
                 }
               },
               child: Text(
                 'Save',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: ThemeColors.homescreenfont,
                 ),
               ),
             ),
           ],
         )),
     body: Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Color(0xfff173e8),
-            Color(0xff17e8e8),
-          ],
-        ),
-      ),
       child: ListView.separated(
         itemBuilder: (context, index) {
-          return Card(
-            elevation: 30,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0)),
-            child: ListTile(
+          return Container(
+            decoration: BoxDecoration(
+              border:
+                  Border.all(color: Colors.yellow, width: 2), // Yellow border
+              borderRadius: BorderRadius.circular(8), // Match card's shape
+            ),
+            child: Card(
+              elevation: 30,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0)),
-              tileColor: Colors.black,
-              title: Center(
-                child: Text(
-                  'Day ${index + 1}',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
+              child: ListTile(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0)),
+                tileColor: ThemeColors.primary,
+                title: Center(
+                  child: Text(
+                    'Day ${index + 1}',
+                    style: TextStyle(
+                        color: ThemeColors.homescreenfont,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
+                onTap: () {
+                  WorkoutAddItemsDaysWise(index);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => WorkoutAddItemsDaysWise(index)),
+                  );
+                },
               ),
-              onTap: () {
-                WorkoutAddItemsDaysWise(index);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => WorkoutAddItemsDaysWise(index)),
-                );
-              },
             ),
           );
         },

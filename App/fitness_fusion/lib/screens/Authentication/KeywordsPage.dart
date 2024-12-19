@@ -1,5 +1,6 @@
 import 'package:fitness_fusion/database/assignPlans.dart';
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:flutter/material.dart';
 
 class KeywordSelectionPage extends StatefulWidget {
@@ -23,6 +24,7 @@ class _KeywordSelectionPageState extends State<KeywordSelectionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ThemeColors.primary,
       appBar: AppBar(
         title: Text('Select Keywords'),
       ),
@@ -34,7 +36,8 @@ class _KeywordSelectionPageState extends State<KeywordSelectionPage> {
               itemBuilder: (context, index) {
                 final keyword = All_Keywords[index];
                 return ListTile(
-                  title: Text(keyword.keyword),
+                  title: Text(keyword.keyword,
+                  style: TextStyle(color: ThemeColors.homescreenfont),),
                   trailing: Checkbox(
                     value: selectedKeywordIds.contains(keyword.id),
                     onChanged: (bool? isChecked) {

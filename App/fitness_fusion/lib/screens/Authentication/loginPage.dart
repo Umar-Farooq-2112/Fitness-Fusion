@@ -7,6 +7,7 @@ import 'package:fitness_fusion/database/retrieveDietPlan.dart';
 import 'package:fitness_fusion/database/retrieveFeedBack.dart';
 import 'package:fitness_fusion/database/retrieveWorkoutPlan.dart';
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:fitness_fusion/dataclass/createDialog.dart';
 import 'package:fitness_fusion/screens/Adminscreen/adminscreen.dart';
 import 'package:fitness_fusion/screens/Authentication/KeywordsPage.dart';
@@ -32,6 +33,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ThemeColors.primary,
       appBar: AppBar(
         title: const Text('FitnessFusion'),
       ),
@@ -59,6 +61,10 @@ class _LoginPageState extends State<LoginPage> {
                     Container(
                       margin: EdgeInsets.all(10.0),
                       child: TextField(
+                          style: TextStyle(
+                            color: ThemeColors
+                                .loginTextFieldFont, // Change text color here
+                          ),
                           controller: usernameController,
                           decoration: InputDecoration(
                             prefixIcon: IconButton(
@@ -71,6 +77,10 @@ class _LoginPageState extends State<LoginPage> {
                     Container(
                       margin: EdgeInsets.all(10.0),
                       child: TextField(
+                          style: TextStyle(
+                            color: ThemeColors
+                                .loginTextFieldFont, // Change text color here
+                          ),
                           controller: passwordController,
                           obscureText: this.view,
                           decoration: InputDecoration(
@@ -118,10 +128,15 @@ class _LoginPageState extends State<LoginPage> {
                                   await retrieveKeywords(context);
 
                                   if (MyUser.type == "Trainee") {
-                                    bool st=await validateUserPlan(MyUser.user_id);
+                                    bool st =
+                                        await validateUserPlan(MyUser.user_id);
 
-                                    if (!st){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) => KeywordSelectionPage()));
+                                    if (!st) {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  KeywordSelectionPage()));
                                     }
 
                                     MyDietPlan = await retrieveDietPlan(
@@ -129,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
                                     MyWorkoutPlan = await retriveWorkoutPlan(
                                         context, MyUser.user_id);
                                     Navigator.pushReplacement(
-                                      context, 
+                                      context,
                                       MaterialPageRoute(
                                           builder: (context) => HomeScreen()),
                                     );
@@ -156,9 +171,33 @@ class _LoginPageState extends State<LoginPage> {
                                     context, "Please enter all fields");
                               }
                             },
-                            child: const Text('Login'),
+                            style: ButtonStyle(
+                              side: WidgetStateProperty.all(
+                                BorderSide(
+                                    color: ThemeColors.loginButtonColors,
+                                    width: 2), // Yellow border of width 2
+                              ),
+                              backgroundColor: WidgetStateProperty.all(
+                                  ThemeColors
+                                      .loginFont), // Set background color here
+                            ),
+                            child: Text(
+                              'Login',
+                              style: TextStyle(
+                                  color: ThemeColors.loginButtonColors),
+                            ),
                           ),
                           ElevatedButton(
+                            style: ButtonStyle(
+                              side: WidgetStateProperty.all(
+                                BorderSide(
+                                    color: ThemeColors.loginButtonColors,
+                                    width: 2), // Yellow border of width 2
+                              ),
+                              backgroundColor: WidgetStateProperty.all(
+                                  ThemeColors
+                                      .loginFont), // Set background color here
+                            ),
                             onPressed: () {
                               Navigator.push(
                                   context,
@@ -166,9 +205,23 @@ class _LoginPageState extends State<LoginPage> {
                                       builder: (context) =>
                                           const SignUpPage()));
                             },
-                            child: const Text('Sign Up'),
+                            child: Text(
+                              'Sign Up',
+                              style: TextStyle(
+                                  color: ThemeColors.loginButtonColors),
+                            ),
                           ),
                           ElevatedButton(
+                            style: ButtonStyle(
+                              side: WidgetStateProperty.all(
+                                BorderSide(
+                                    color: ThemeColors.loginButtonColors,
+                                    width: 2), // Yellow border of width 2
+                              ),
+                              backgroundColor: WidgetStateProperty.all(
+                                  ThemeColors
+                                      .loginFont), // Set background color here
+                            ),
                             onPressed: () {
                               // Example: Check if username and password are not empty
                               Navigator.push(
@@ -177,7 +230,11 @@ class _LoginPageState extends State<LoginPage> {
                                       builder: (context) =>
                                           const TrainerRequest()));
                             },
-                            child: const Text('Sign Up for Trainers'),
+                            child: Text(
+                              'Sign Up for Trainers',
+                              style: TextStyle(
+                                  color: ThemeColors.loginButtonColors),
+                            ),
                           ),
                         ],
                       ),

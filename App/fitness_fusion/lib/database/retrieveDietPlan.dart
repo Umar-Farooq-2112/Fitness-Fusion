@@ -106,12 +106,10 @@ Future<int> storeDietPlan(
       );
 
       if (response2.statusCode == 200) {
-        createDialog(context, "Done");
       } else {
         createDialog(context, "Error occured $i");
       }
     }
-    createDialog(context, "Saved");
   } catch (e) {
     createDialog(context, "Error: $e");
     return -1;

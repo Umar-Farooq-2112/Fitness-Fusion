@@ -1,4 +1,5 @@
 import 'package:fitness_fusion/dataclass/FoodItem.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:flutter/material.dart';
 import 'buildAppBar.dart';
 
@@ -13,16 +14,10 @@ class SingleFoodItemScreen extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor:  ThemeColors.primary,
       appBar: buildAppBar(screenHeight, screenWidth),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xfff173e8),
-              Color(0xff17e8e8),
-            ],
-          ),
-        ),
+
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -38,13 +33,13 @@ class SingleFoodItemScreen extends StatelessWidget {
                   item.name,
                   style: TextStyle(
                     fontSize: screenHeight * 0.05,
-                    color: Colors.black,
+                    color:  ThemeColors.exerciseScreenFont,
                   ),
                 ),
               ),
               subtitle: Text(item.description, maxLines: 10,
                 style: TextStyle(
-                  color: Colors.black,
+                  color:  ThemeColors.exerciseScreenFont2,
                   fontSize: 15,
                 ),),
             ),
@@ -58,13 +53,13 @@ class SingleFoodItemScreen extends StatelessWidget {
                         'Calories:\t',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color:  ThemeColors.exerciseScreenFont2,
                         ),
                       ),
                       Text(
                         item.calories.toString(),
                         style: TextStyle(
-                          color: Colors.black,
+                          color:ThemeColors.exerciseScreenFont2,
                         ),
                       ),
                     ],
@@ -75,13 +70,13 @@ class SingleFoodItemScreen extends StatelessWidget {
                         'Protein:\t',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color: ThemeColors.exerciseScreenFont2,
                         ),
                       ),
                       Text(
                         item.protein.toString(),
                         style: TextStyle(
-                          color: Colors.black,
+                          color: ThemeColors.exerciseScreenFont2,
                         ),
                       ),
                     ],
@@ -92,13 +87,13 @@ class SingleFoodItemScreen extends StatelessWidget {
                         'Carbohydrates:\t',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color: ThemeColors.exerciseScreenFont2,
                         ),
                       ),
                       Text(
                         item.carbohydrates.toString(),
                         style: TextStyle(
-                          color: Colors.black,
+                          color: ThemeColors.exerciseScreenFont2,
                         ),
                       ),
                     ],
@@ -109,13 +104,13 @@ class SingleFoodItemScreen extends StatelessWidget {
                         'Fats:\t',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color: ThemeColors.exerciseScreenFont2,
                         ),
                       ),
                       Text(
                         item.fats.toString(),
                         style: TextStyle(
-                          color: Colors.black,
+                          color: ThemeColors.exerciseScreenFont2,
                         ),
                       ),
                     ],
@@ -126,13 +121,13 @@ class SingleFoodItemScreen extends StatelessWidget {
                         'Fibre:\t',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color: ThemeColors.exerciseScreenFont2,
                         ),
                       ),
                       Text(
                         item.fibre.toString(),
                         style: TextStyle(
-                          color: Colors.black,
+                          color: ThemeColors.exerciseScreenFont2,
                         ),
                       ),
                     ],
@@ -143,13 +138,13 @@ class SingleFoodItemScreen extends StatelessWidget {
                         'Sugar:\t',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color: ThemeColors.exerciseScreenFont2,
                         ),
                       ),
                       Text(
                         item.sugar.toString(),
                         style: TextStyle(
-                          color: Colors.black,
+                          color: ThemeColors.exerciseScreenFont2,
                         ),
                       ),
                     ],

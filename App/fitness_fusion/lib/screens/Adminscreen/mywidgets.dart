@@ -1,4 +1,6 @@
 import 'package:fitness_fusion/dataclass/FoodItem.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
+import 'package:fitness_fusion/screens/Adminscreen/Approval.dart';
 import 'package:fitness_fusion/screens/Adminscreen/addExercise.dart';
 import 'package:fitness_fusion/screens/Adminscreen/addFood.dart';
 import 'package:fitness_fusion/screens/Adminscreen/addKeyword.dart';
@@ -7,10 +9,10 @@ import 'package:table_calendar/table_calendar.dart';
 
 AppBar buildAppBar(double screenHeight, double screenWidth) {
   return AppBar(
-      backgroundColor: const Color.fromARGB(255, 170, 184, 196),
+      backgroundColor: ThemeColors.primary,
       toolbarHeight: screenHeight * 0.1,
-      title: const Padding(
-        padding: EdgeInsets.only(top: 30),
+      title: Padding(
+        padding: const EdgeInsets.only(top: 30),
         child: Column(
           children: [
             Row(
@@ -25,17 +27,12 @@ AppBar buildAppBar(double screenHeight, double screenWidth) {
                       style: TextStyle(
                         fontFamily: 'Welcome',
                         fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 14, 10, 10),
+                        color: ThemeColors.homescreenfont,
                         fontSize: 24,
                       ),
                     ),
                   ),
                 ),
-                Expanded(
-                    flex: 1,
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage("assets/images/hi.gif"),
-                    ))
               ],
             ),
           ],
@@ -44,10 +41,10 @@ AppBar buildAppBar(double screenHeight, double screenWidth) {
       centerTitle: true,
       bottom: PreferredSize(
           preferredSize: Size.fromHeight(screenHeight * 0.035),
-          child: const Text(
+          child: Text(
             'Elevate Your Fitness, Elevate Your Life',
             style: TextStyle(
-              color: Color.fromARGB(255, 170, 184, 196),
+              color: ThemeColors.homescreenfont,
               fontSize: 13,
             ),
           )));
@@ -76,24 +73,35 @@ Widget buildWelcomeBlock() {
 
 Widget buildCalendarBlock() {
   return Container(
-    color: const Color.fromARGB(255, 170, 184, 196),
+    color: ThemeColors.primary,
     child: TableCalendar(
-      firstDay: DateTime.utc(2020, 1, 1), // Adjust the start date as needed
-      lastDay: DateTime.utc(2026, 12, 31), // Adjust the end date as needed
-      focusedDay: DateTime.now(),
-      formatAnimationCurve: Curves.easeInCirc,
-      calendarFormat: CalendarFormat.week,
-      headerStyle: const HeaderStyle(
-        titleCentered: true,
-        formatButtonVisible: false,
-      ),
-      startingDayOfWeek: StartingDayOfWeek.monday,
-      onDaySelected: (selectedDay, focusedDay) => {
-        print("SELECTED DAY: $selectedDay"),
-      },
+  firstDay: DateTime.utc(2020, 1, 1),
+  lastDay: DateTime.utc(2026, 12, 31),
+  focusedDay: DateTime.now(),
+  formatAnimationCurve: Curves.easeInCirc,
+  calendarFormat: CalendarFormat.week,
+  headerStyle: HeaderStyle(
+    titleCentered: true,
+    formatButtonVisible: false,
+    titleTextStyle: TextStyle(color: ThemeColors.homescreenfont,fontWeight: FontWeight.bold), // Change header font color
+  ),
+  startingDayOfWeek: StartingDayOfWeek.monday,
+  onDaySelected: (selectedDay, focusedDay) {
+    print("SELECTED DAY: $selectedDay");
+  },
 
-      // Add more properties and callbacks as needed
-    ),
+  calendarStyle: CalendarStyle(
+    todayTextStyle: TextStyle(color: ThemeColors.homescreenfont), // Change today's date text color
+    selectedTextStyle: TextStyle(color: ThemeColors.homescreenfont2), // Change selected date text color
+    defaultTextStyle: TextStyle(color: ThemeColors.homescreenfont), // Change default day text color
+  ),
+  
+  daysOfWeekStyle: DaysOfWeekStyle(
+    weekdayStyle: TextStyle(color: ThemeColors.homescreenfont2), // Change weekday text color
+    weekendStyle: TextStyle(color: ThemeColors.homescreenfont2), // Change weekend text color
+  ),
+)
+
   );
 }
 
@@ -164,48 +172,76 @@ Widget buildCurrentPlansBlock(double screenWidth, BuildContext context) {
 
 Widget buildCurrentPlansBlock2(double screenWidth, BuildContext context) {
   return Container(
-    color: const Color.fromARGB(255, 19, 24, 38),
+    color: ThemeColors.primary,
     child: Padding(
       padding: const EdgeInsets.all(10.0),
       child: Center(
         child: Container(
           height: double.infinity,
           width: double.infinity,
-          color: const Color.fromARGB(255, 16, 37, 38),
+          color: ThemeColors.primary,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Expanded(
-                child: InkWell(
-                  onTap: () {
-                    addKeywords(context);
-                  },
-                  child: const SizedBox(
-                    height: double.maxFinite,
-                    child: Card(
-                      color: Color.fromARGB(255, 239, 234, 221),
-                      elevation: 10,
-                      child: Center(child: Text('Keyword')),
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.circular(25),
+
+                      border: Border.all(
+                          color: ThemeColors.homescreenfont, width: 3)),
+                  child: InkWell(
+                    onTap: () {
+                      addKeywords(context);
+                    },
+                    child: SizedBox(
+                      height: double.maxFinite,
+                      child: Card(
+                        color: ThemeColors.primary,
+                        elevation: 10,
+                        child: Center(
+                            child: Text(
+                          'Keyword',
+                          style: TextStyle(
+                              color: ThemeColors.homescreenfont, fontSize: 20),
+                        )),
+                      ),
                     ),
                   ),
                 ),
               ),
               Expanded(
-                child: InkWell(
-                  onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => AddTrainer(trainers: const []),
-                    //   ),
-                    // );
-                  },
-                  child: const SizedBox(
-                    height: double.maxFinite,
-                    child: Card(
-                      color: Color.fromARGB(255, 239, 234, 221),
-                      elevation: 10,
-                      child: Center(child: Text('Trainer')),
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.circular(25), // Rounded corners
+
+                      border: Border.all(
+                          color: ThemeColors.homescreenfont, width: 3)),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ApprovalList(),
+                        ),
+                      );
+                    },
+                    child: SizedBox(
+                      height: double.maxFinite,
+                      child: Card(
+                        color: ThemeColors.primary,
+                        elevation: 10,
+                        child: Center(
+                            child: Text(
+                          'Trainer',
+                          style: TextStyle(
+                              color: ThemeColors.homescreenfont, fontSize: 20),
+                        )),
+                      ),
                     ),
                   ),
                 ),

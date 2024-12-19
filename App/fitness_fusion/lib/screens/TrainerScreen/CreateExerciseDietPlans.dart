@@ -1,4 +1,5 @@
 import 'package:fitness_fusion/dataclass/Keyword.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:fitness_fusion/screens/TrainerScreen/createWorkoutDayWisePlan.dart';
 import 'package:fitness_fusion/screens/UserScreen/buildAppBar.dart';
 import 'package:flutter/material.dart';
@@ -28,13 +29,17 @@ class _CreateExerciseDietPlansState extends State<CreateExerciseDietPlans> {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: ThemeColors.primary,
       appBar: buildAppBar(screenHeight, screenWidth),
       body: DefaultTabController(
         length: 2,
         child: Scaffold(
+          backgroundColor: ThemeColors.primary,
           appBar: AppBar(
+            backgroundColor: ThemeColors.primary,
             bottom: TabBar(
-              labelColor: Colors.black,
+              
+              labelColor: ThemeColors.homescreenfont,
               unselectedLabelColor: Colors.grey,
               tabs: [
                 Tab(

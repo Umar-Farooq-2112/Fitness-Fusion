@@ -1,4 +1,5 @@
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:fitness_fusion/screens/TrainerScreen/TrainerHomeScreen.dart';
 import 'package:fitness_fusion/screens/UserScreen/ExerciseScreen.dart';
 import 'package:fitness_fusion/screens/UserScreen/NutritionScreen.dart';
@@ -23,6 +24,7 @@ class TrainerWindowState extends State<TrainerWindow> {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: ThemeColors.primary,
       appBar: buildAppBar(screenHeight, screenWidth),
       body: IndexedStack(
         index: _currentIndex,
@@ -40,25 +42,25 @@ class TrainerWindowState extends State<TrainerWindow> {
             _currentIndex = index;
           });
         },
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            backgroundColor: Color.fromARGB(255, 19, 24, 38),
-            icon: Icon(Icons.home),
+            backgroundColor: ThemeColors.primary,
+            icon: const Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            backgroundColor: Color.fromARGB(255, 19, 24, 38),
-            icon: FaIcon(FontAwesomeIcons.dumbbell),
+            backgroundColor: ThemeColors.primary,
+            icon: const FaIcon(FontAwesomeIcons.dumbbell),
             label: 'Workout',
           ),
           BottomNavigationBarItem(
-            backgroundColor: Color.fromARGB(255, 19, 24, 38),
-            icon: FaIcon(FontAwesomeIcons.utensils),
+            backgroundColor: ThemeColors.primary,
+            icon: const FaIcon(FontAwesomeIcons.utensils),
             label: 'Nutrition',
           ),
           BottomNavigationBarItem(
-            backgroundColor: Color.fromARGB(255, 19, 24, 38),
-            icon: FaIcon(FontAwesomeIcons.solidUser),
+            backgroundColor: ThemeColors.primary,
+            icon: const FaIcon(FontAwesomeIcons.solidUser),
             label: 'Settings',
           ),
         ],

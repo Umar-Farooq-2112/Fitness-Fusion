@@ -4,6 +4,7 @@ import 'package:fitness_fusion/dataclass/FoodItem.dart';
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
 import 'package:fitness_fusion/dataclass/Keyword.dart';
 import 'package:fitness_fusion/dataclass/Plan.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:fitness_fusion/screens/UserScreen/buildAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -30,15 +31,8 @@ _TrainerDietPlanState(this.keywords);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ThemeColors.primary,
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xfff173e8),
-              Color(0xff17e8e8),
-            ],
-          ),
-        ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -48,11 +42,12 @@ _TrainerDietPlanState(this.keywords);
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                    style: ElevatedButton.styleFrom(backgroundColor: ThemeColors.primary,
+                    side: BorderSide(color: ThemeColors.homescreenfont,width: 2)),
                     child: Text(
                       'Add Food Items',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: ThemeColors.homescreenfont,
                       ),
                     ),
                     onPressed: () async {
@@ -75,7 +70,11 @@ _TrainerDietPlanState(this.keywords);
                     },
                   ),
                   ElevatedButton(
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                    style: ElevatedButton.styleFrom(backgroundColor: ThemeColors.primary,
+                    side: BorderSide(
+                      color: ThemeColors.homescreenfont,
+                      width: 2
+                    )),
                     onPressed: () async {
                       MyDietPlan = DietPlan(1, DateTime.now(), 'Diet Plan');
                       for (Meal item in addMeal) {
@@ -94,8 +93,8 @@ _TrainerDietPlanState(this.keywords);
                             .BOTTOM, // ToastGravity.TOP, ToastGravity.CENTER
                         timeInSecForIosWeb:
                             1, // the duration in seconds that the toast should be displayed
-                        backgroundColor: Colors.grey,
-                        textColor: Colors.white,
+                        backgroundColor: ThemeColors.primary,
+                        textColor: ThemeColors.homescreenfont,
                         fontSize: 16.0,
                       );
                       // Navigator.pop(context);
@@ -104,7 +103,7 @@ _TrainerDietPlanState(this.keywords);
                     child: Text(
                       'Save',
                       style: TextStyle(
-                        color: Colors.white,
+                        color:ThemeColors.homescreenfont,
                       ),
                     ),
                   ),
@@ -112,48 +111,49 @@ _TrainerDietPlanState(this.keywords);
               ),
               SizedBox(height: 20),
               Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0xfff173e8),
-                      Color(0xff17e8e8),
-                    ],
-                  ),
-                ),
+                color: ThemeColors.primary,
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemCount: addMeal.length,
                   itemBuilder: (context, index) {
-                    return Card(
-                      elevation: 30,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0)),
-                      child: ListTile(
+                    return Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: ThemeColors.homescreenfont,
+                          width: 3
+                        )
+                      ),
+                      child: Card(
+                        elevation: 30,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0)),
-                        tileColor: Colors.black,
-                        leading: Text(
-                          '${addMeal[index].time.hour}:${addMeal[index].time.minute}',
-                          style: TextStyle(
-                            color: Colors.white,
+                        child: ListTile(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          tileColor: ThemeColors.primary,
+                          leading: Text(
+                            '${addMeal[index].time.hour}:${addMeal[index].time.minute}',
+                            style: TextStyle(
+                              color: ThemeColors.homescreenfont,
+                            ),
                           ),
+                          title: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  '${addMeal[index].item.name}',
+                                  style: TextStyle(
+                                    color: ThemeColors.homescreenfont,
+                                  ),
+                                ),
+                                Text(
+                                  'Quantity: ${addMeal[index].quantity} g',
+                                  style: TextStyle(
+                                    color: ThemeColors.homescreenfont,
+                                  ),
+                                ),
+                              ]),
                         ),
-                        title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                '${addMeal[index].item.name}',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Text(
-                                'Quantity: ${addMeal[index].quantity} g',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ]),
                       ),
                     );
                   },
@@ -180,7 +180,8 @@ _TrainerDietPlanState(this.keywords);
       builder: (BuildContext context) {
         double screenHeight = MediaQuery.of(context).size.height;
         return AlertDialog(
-          title: Center(child: Text('Meal Information')),
+          backgroundColor: ThemeColors.primary,
+          title: Center(child: Text('Meal Information',style: TextStyle(color: ThemeColors.homescreenfont),)),
           content: Container(
             height: screenHeight * 0.5,
             child: Column(
@@ -188,26 +189,29 @@ _TrainerDietPlanState(this.keywords);
               children: [
                 Column(
                   children: [
-                    Text('24 Hour Format'),
+                    Text('24 Hour Format',style: TextStyle(color: ThemeColors.homescreenfont),),
                     TextField(
                       controller: hourController,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(labelText: 'Hour'),
+                      style: TextStyle(color: ThemeColors.homescreenfont),
                     ),
                     TextField(
                       controller: minuteController,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(labelText: 'Minutes'),
+                      style: TextStyle(color: ThemeColors.homescreenfont),
                     ),
                   ],
                 ),
                 Column(
                   children: [
-                    Text('Amount In Grams'),
+                    Text('Amount In Grams',style: TextStyle(color: ThemeColors.homescreenfont),),
                     TextField(
                       controller: quantityController,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(labelText: 'Quantity'),
+                      style: TextStyle(color: ThemeColors.homescreenfont),
                     ),
                   ],
                 ),
@@ -216,13 +220,13 @@ _TrainerDietPlanState(this.keywords);
           ),
           actions: <Widget>[
             TextButton(
-              child: Text('Cancel'),
+              child: Text('Cancel',style: TextStyle(color: ThemeColors.homescreenfont),),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text('OK'),
+              child: Text('OK',style: TextStyle(color: ThemeColors.homescreenfont),),
               onPressed: () {
                 int enteredHour = int.tryParse(hourController.text) ?? -1;
                 int enteredMinute = int.tryParse(minuteController.text) ?? -1;
@@ -259,48 +263,49 @@ _TrainerDietPlanState(this.keywords);
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: ThemeColors.primary,
       appBar: buildAppBar(screenHeight, screenWidth),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xfff173e8),
-              Color(0xff17e8e8),
-            ],
-          ),
-        ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView.separated(
             itemBuilder: (context, index) {
-              return Card(
-                elevation: 30,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0)),
-                child: ListTile(
+              return Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: ThemeColors.homescreenfont,
+                    width: 3
+                  )
+                ),
+                child: Card(
+                  elevation: 30,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0)),
-                  tileColor: Colors.black,
-                  title: Text(
-                    foodItems[index].name,
-                    style: TextStyle(
-                      color: Colors.white,
+                  child: ListTile(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
+                    tileColor: ThemeColors.primary,
+                    title: Text(
+                      foodItems[index].name,
+                      style: TextStyle(
+                        color: ThemeColors.homescreenfont,
+                      ),
                     ),
+                    trailing: foodItems[index].image,
+                    onTap: () async {
+                      FoodData? foodInfo = await _showInputDialog(context);
+                
+                      if (foodInfo != null) {
+                        FoodItem selectedFood = foodItems[index];
+                
+                        Navigator.of(context).pop({
+                          'time': foodInfo.time,
+                          'food': selectedFood,
+                          'quantity': foodInfo.quantity
+                        });
+                      }
+                    },
                   ),
-                  trailing: foodItems[index].image,
-                  onTap: () async {
-                    FoodData? foodInfo = await _showInputDialog(context);
-
-                    if (foodInfo != null) {
-                      FoodItem selectedFood = foodItems[index];
-
-                      Navigator.of(context).pop({
-                        'time': foodInfo.time,
-                        'food': selectedFood,
-                        'quantity': foodInfo.quantity
-                      });
-                    }
-                  },
                 ),
               );
             },

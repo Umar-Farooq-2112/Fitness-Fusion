@@ -1,4 +1,5 @@
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'buildAppBar.dart';
@@ -22,6 +23,7 @@ class HomeScreenState extends State<HomeScreen> {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: ThemeColors.primary,
       appBar: buildAppBar(screenHeight, screenWidth),
       body: IndexedStack(
         index: _currentIndex,
@@ -33,6 +35,7 @@ class HomeScreenState extends State<HomeScreen> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: ThemeColors.primary,
         currentIndex: _currentIndex,
         onTap: (int index) {
           setState(() {
@@ -41,20 +44,20 @@ class HomeScreenState extends State<HomeScreen> {
         },
         items: [
           BottomNavigationBarItem(
-            backgroundColor: Color.fromARGB(255, 19, 24, 38),
-            icon: Icon(Icons.home),
+            backgroundColor: ThemeColors.primary,
+            icon: Icon(Icons.home,color: ThemeColors.homescreenfont,),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.dumbbell),
+            icon: FaIcon(FontAwesomeIcons.dumbbell,color: ThemeColors.homescreenfont,),
             label: 'Workout',
           ),
           BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.utensils),
+            icon: FaIcon(FontAwesomeIcons.utensils,color: ThemeColors.homescreenfont,),
             label: 'Nutrition',
           ),
           BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.solidUser),
+            icon: FaIcon(FontAwesomeIcons.solidUser,color: ThemeColors.homescreenfont,),
             label: 'Settings',
           ),
         ],

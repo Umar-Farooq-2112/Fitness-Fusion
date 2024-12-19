@@ -1,6 +1,7 @@
 import 'package:fitness_fusion/dataclass/Exercises.dart';
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
 import 'package:fitness_fusion/dataclass/Plan.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:fitness_fusion/screens/TrainerScreen/displayExercisesAndSetsForPlan.dart';
 import 'package:fitness_fusion/screens/UserScreen/buildAppBar.dart';
 import 'package:flutter/material.dart';
@@ -30,16 +31,9 @@ class _WorkoutAddItemsDaysWiseState extends State<WorkoutAddItemsDaysWise> {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      backgroundColor: ThemeColors.primary,
       appBar: buildAppBar(screenHeight, screenWidth),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xfff173e8),
-              Color(0xff17e8e8),
-            ],
-          ),
-        ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -53,7 +47,7 @@ class _WorkoutAddItemsDaysWiseState extends State<WorkoutAddItemsDaysWise> {
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
                         child: Text('Add Exercises',
-                        style: TextStyle(color:Colors.white,),),
+                        style: TextStyle(color:ThemeColors.homescreenfont,),),
                         onPressed: () async {
                           final result =
                               await Navigator.push(context, MaterialPageRoute(
@@ -94,7 +88,7 @@ class _WorkoutAddItemsDaysWiseState extends State<WorkoutAddItemsDaysWise> {
                         },
                         child: Text('Save',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: ThemeColors.homescreenfont,
                         ),),
                       ),
                     ],
@@ -110,27 +104,27 @@ class _WorkoutAddItemsDaysWiseState extends State<WorkoutAddItemsDaysWise> {
                         child: ListTile(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0)),
-                          tileColor: Colors.black,
+                          tileColor: ThemeColors.primary,
                           title: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   '${MyWorkoutPlan.Exercise[Index][index].Exercise.name}',
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: ThemeColors.homescreenfont,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 Text(
                                   'Sets: ${MyWorkoutPlan.Exercise[Index][index].Sets}',
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: ThemeColors.homescreenfont,
                                   ),
                                 ),
                               ]),
                           trailing: IconButton(
                             icon: Icon(Icons.delete),
-                            color: Colors.white,
+                            color: ThemeColors.homescreenfont,
                             onPressed: () {
                               setState(() {
                                 MyWorkoutPlan.Exercise[Index].removeAt(index);

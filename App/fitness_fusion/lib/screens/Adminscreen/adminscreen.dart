@@ -2,7 +2,7 @@
 
 import 'package:fitness_fusion/dataclass/Exercises.dart';
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
-import 'package:fitness_fusion/screens/Adminscreen/Approval.dart';
+import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:fitness_fusion/screens/Adminscreen/manageFeedbacks.dart';
 import 'package:fitness_fusion/screens/UserScreen/ExerciseScreen.dart';
 import 'package:fitness_fusion/screens/UserScreen/NutritionScreen.dart';
@@ -28,6 +28,7 @@ class HomeScreenState extends State<Admin> {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: ThemeColors.primary,
       appBar: buildAppBar(screenHeight, screenWidth),
       body: IndexedStack(
         index: _currentIndex,
@@ -81,13 +82,6 @@ Widget homeScreenBody(BuildContext context, double screenWidth) {
           child: buildCalendarBlock(),
         ),
       ),
-      // Expanded(
-      //   flex: 3,
-      //   child: Padding(
-      //     padding: const EdgeInsets.all(4.0),
-      //     child: buildCurrentPlansBlock(screenWidth, context),
-      //   ),
-      // ),
       Expanded(
         flex: 3,
         child: Padding(
@@ -101,43 +95,28 @@ Widget homeScreenBody(BuildContext context, double screenWidth) {
 
 
 Widget profileScreenBody(BuildContext context, double screenWidth) {
-  return Column(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children: [
-      Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: ElevatedButton(
-                  child: const Text("View FeedBacks"),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => FeedbackList(),
-                      ),
-                    );
-                  },
-                )),
-            Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: ElevatedButton(
-                  child: const Text("Trainer's Request"),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ApprovalList(),
-                      ),
-                    );
-                  },
-                )),
-          ],
-        ),
-      ),
-    ],
+  return Container(
+    child: Center(
+      child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: ThemeColors.primary,
+              side: BorderSide(
+                color: ThemeColors.homescreenfont,
+                width: 4
+              )
+            ),
+            child: Text("View FeedBacks",style: TextStyle(color: ThemeColors.homescreenfont),),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FeedbackList(),
+                ),
+              );
+            },
+          )),
+    ),
   );
 }

@@ -20,9 +20,9 @@ class _AddExerciseState extends State<AddExercise> {
 
   late String _name;
   late String _description;
+  // ignore: unused_field
   late Uint8List _gifData;
 
-  late String _gifPath;
   late String _bodyPart = "1";
   late String _bodyDomain = "1";
   late bool _isPush = false;
