@@ -3,7 +3,9 @@ select * from exercises;
 SELECT f_id AS id,name,description,image,calories,fats,protein,carbohydrates,fibre,sugar
 FROM food_items;
 select * from workout_keywords;
-
+UPDATE user_diets
+SET enrollment_date = current_date()
+where user_id>0;
 select * from diet_Keywords;
 insert into user_workouts (USER_ID,w_ID) values (2,1);
 select * from keywords;
@@ -28,3 +30,14 @@ FROM
     body_domain bd ON bd.dom_id = bp.dom_id
 WHERE
     bd.name = '';
+
+
+Drop table user_diets;
+
+ALTER TABLE user_diets
+DROP CONSTRAINT user_diets_primary_key;
+
+-- Step 2: Add a new primary key constraint on user_id
+ALTER TABLE user_diets
+ADD PRIMARY KEY (user_id);
+    

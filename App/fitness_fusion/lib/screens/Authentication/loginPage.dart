@@ -132,11 +132,11 @@ class _LoginPageState extends State<LoginPage> {
                                         await validateUserPlan(MyUser.user_id);
 
                                     if (!st) {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  KeywordSelectionPage()));
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => KeywordSelectionPage()),
+                                    );
                                     }
 
                                     MyDietPlan = await retrieveDietPlan(

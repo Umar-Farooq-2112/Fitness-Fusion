@@ -128,7 +128,7 @@ CREATE TABLE User_diets(
     user_id INT,
     d_id INT,
     Enrollment_Date DATE,
-    CONSTRAINT user_diets_primary_key PRIMARY KEY (d_id),
+    CONSTRAINT user_diets_primary_key PRIMARY KEY (user_id),
     CONSTRAINT user_diets_foreign_key FOREIGN KEY (user_id) REFERENCES User_authentication(user_id),
     FOREIGN KEY (d_id) REFERENCES Diet_Plans(d_id)
 );

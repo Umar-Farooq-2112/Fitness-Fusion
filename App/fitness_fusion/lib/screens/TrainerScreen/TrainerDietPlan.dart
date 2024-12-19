@@ -16,6 +16,7 @@ class FoodData {
   FoodData(this.quantity, this.time);
 }
 
+// ignore: must_be_immutable
 class TrainerDietPlan extends StatefulWidget {
   List<Keyword> keywords;
   TrainerDietPlan(this.keywords);
