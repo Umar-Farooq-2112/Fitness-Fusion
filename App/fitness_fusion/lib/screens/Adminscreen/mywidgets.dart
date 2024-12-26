@@ -1,8 +1,5 @@
-import 'package:fitness_fusion/dataclass/FoodItem.dart';
 import 'package:fitness_fusion/dataclass/ThemeContent.dart';
 import 'package:fitness_fusion/screens/Adminscreen/Approval.dart';
-import 'package:fitness_fusion/screens/Adminscreen/addExercise.dart';
-import 'package:fitness_fusion/screens/Adminscreen/addFood.dart';
 import 'package:fitness_fusion/screens/Adminscreen/addKeyword.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -102,71 +99,6 @@ Widget buildCalendarBlock() {
   ),
 )
 
-  );
-}
-
-Widget buildCurrentPlansBlock(double screenWidth, BuildContext context) {
-  late List<FoodItem>? adminfood = [];
-  return Container(
-    color: const Color.fromARGB(255, 19, 24, 38),
-    child: Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Center(
-        child: Container(
-          height: double.infinity,
-          width: double.infinity,
-          color: const Color.fromARGB(255, 16, 37, 38),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AddExercise(
-                          exercises: [],
-                        ), ////////////////////////////////
-                      ),
-                    );
-                  },
-                  child: const SizedBox(
-                    height: double.maxFinite,
-                    child: Card(
-                      color: Color.fromARGB(255, 239, 234, 221),
-                      elevation: 10,
-                      child: Center(child: Text('Exercise')),
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            AddfoodItems(foodItemss: adminfood),
-                      ),
-                    );
-                  },
-                  child: const SizedBox(
-                    height: double.maxFinite,
-                    child: Card(
-                      color: Color.fromARGB(255, 239, 234, 221),
-                      elevation: 10,
-                      child: Center(child: Text('Diet Item')),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    ),
   );
 }
 
