@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:fitness_fusion/database/database.dart';
 import 'package:fitness_fusion/dataclass/User.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 Future<bool> registerNewUser(

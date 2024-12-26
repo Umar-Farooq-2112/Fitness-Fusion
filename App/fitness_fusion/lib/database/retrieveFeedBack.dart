@@ -4,8 +4,6 @@ import 'package:fitness_fusion/database/database.dart';
 import 'package:fitness_fusion/dataclass/FeedBack.dart';
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
 import 'package:fitness_fusion/dataclass/Plan.dart';
-import 'package:fitness_fusion/dataclass/createDialog.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 Future<void> retrieveFeedback() async {
