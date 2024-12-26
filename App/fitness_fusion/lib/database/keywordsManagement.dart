@@ -7,8 +7,8 @@ import 'package:fitness_fusion/dataclass/createDialog.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-Future<void> retrieveKeywords(BuildContext context) async {
-  final response = await http.get(Uri.parse('http://localhost:4000/keyword'));
+Future<void> retrieveKeywords() async {
+  final response = await http.get(Uri.parse(DB('keyword').getLink()));
 
   if (response.statusCode == 200) {
     final List<dynamic> responseData = jsonDecode(response.body);
@@ -18,10 +18,10 @@ Future<void> retrieveKeywords(BuildContext context) async {
           .map((item) => Keyword(item['id'], item['name']))
           .toList();
     } else {
-      createDialog(context, 'No Keyword Found');
+      print('No Keyword Found');
     }
   } else {
-    createDialog(context, 'Request failed with status: ${response.statusCode}');
+    print('Request failed with status: ${response.statusCode}');
   }
 }
 

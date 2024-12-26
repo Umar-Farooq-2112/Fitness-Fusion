@@ -19,8 +19,8 @@ class _KeywordSelectionPageState extends State<KeywordSelectionPage> {
     await findMatchingWorkoutPlan(selectedKeywordIds, MyUser.user_id);
     await findMatchingDietPlan(selectedKeywordIds, MyUser.user_id);
     print("Assigned a workout plan Successfully");
-    MyDietPlan = await retrieveDietPlan(context, MyUser.user_id);
-    MyWorkoutPlan = await retriveWorkoutPlan(context, MyUser.user_id);
+    MyDietPlan = await retrieveDietPlan(MyUser.user_id);
+    MyWorkoutPlan = await retriveWorkoutPlan(MyUser.user_id);
     print("Fetched Successfully");
     Navigator.pushReplacement(
       context,

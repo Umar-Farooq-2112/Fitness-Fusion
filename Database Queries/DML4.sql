@@ -16,7 +16,6 @@ INSERT INTO Exercises VALUES
 (2,"Dumbbell Curls","Dumbbell Game",load_file('C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/exer/curl.gif'),5,2,3),
 (3,"Lat Pulldown","Machine aided Game",load_file('C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/exer/lat.gif'),13,2,4),
 (4,"Skull Crusher","Barbell Game",load_file('C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/exer/sklcrush.gif'),6,1,3),
-(5,"Shoulder Press","Dumbbell based game",load_file('C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/exer/dsp.gif'),14,1,2),
 (6,"Push Ups","For Upper body",load_file('C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/exer/pushup.gif'),2,1,1),
 (7,"Pull Ups","For Back and Lats",load_file('C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/exer/pushup.gif'),13,2,1),
 (8,"Deadlift","Effective for lower back and legs",load_file('C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/exer/deadlift.gif'),12,2,3),

@@ -2,12 +2,11 @@ import 'package:fitness_fusion/database/database.dart';
 import 'package:fitness_fusion/dataclass/FoodItem.dart';
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
 import 'package:fitness_fusion/dataclass/Exercises.dart';
-import 'package:fitness_fusion/dataclass/createDialog.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-Future<void> fetchAndSetFoodItems(BuildContext context) async {
+Future<void> fetchAndSetFoodItems() async {
   final response = await http.get(Uri.parse(DB('fooditems').getLink()));
 
   if (response.statusCode == 200) {
@@ -20,16 +19,14 @@ Future<void> fetchAndSetFoodItems(BuildContext context) async {
                 item['name'],
                 item['description'],
                 Image.memory(base64Decode(item['image'])),
-                item['calories'],
-                item['fats'],
-                item['protein'],
-                item['carbohydrates'],
-                item['fibre'],
-                item['sugar'],
+                item['calories'].toDouble(),
+                item['fats'].toDouble(),
+                item['protein'].toDouble(),
+                item['carbohydrates'].toDouble(),
+                item['fibre'].toDouble(),
+                item['sugar'].toDouble(),
               ))
           .toList();
-    } else {
-      createDialog(context, "Unable to get data");
     }
   }
 }
@@ -43,7 +40,7 @@ List<String> allBodyDomains = [
   'Legs',
 ];
 
-Future<void> fetchAndSetExercises(BuildContext context) async {
+Future<void> fetchAndSetExercises() async {
   for (int i = 0; i < 6; i++) {
     final response = await http
         .get(Uri.parse(DB('exercises/domain/${allBodyDomains[i]}').getLink()));

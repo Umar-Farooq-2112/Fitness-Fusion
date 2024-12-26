@@ -1,12 +1,10 @@
 import 'dart:convert';
 import 'package:fitness_fusion/dataclass/GlobalData.dart';
-import 'package:fitness_fusion/dataclass/createDialog.dart';
 import 'package:http/http.dart' as http;
 import 'package:fitness_fusion/database/database.dart';
 import 'package:fitness_fusion/dataclass/User.dart';
-import 'package:flutter/material.dart';
 
-Future<bool> requestTrainer(BuildContext context, User input) async {
+Future<bool> requestTrainer(User input) async {
   Map<String, dynamic> tempBody = {
     "username": input.username,
     "password": input.password,
@@ -38,19 +36,18 @@ Future<bool> requestTrainer(BuildContext context, User input) async {
   }
 }
 
-Future<bool> manageRequest(BuildContext context, int user_id, int res) async {
+Future<bool> manageRequest(int user_id, int res) async {
 
   final response = await http.post(Uri.parse(DB('request/id/$user_id/$res').getLink()));
 
   if (response.statusCode == 200) {
     return true;
   } else {
-    createDialog(context, "Error managing the request");
     return false;
   }
 }
 
-Future<void> fetchRequests(BuildContext context) async {
+Future<void> fetchRequests() async {
   try {
     final response = await http.get(Uri.parse(DB('request').getLink()));
 
@@ -74,15 +71,12 @@ Future<void> fetchRequests(BuildContext context) async {
 
       } else {
         print('Invalid response data format: $responseData');
-        createDialog(context, 'Error parsing response data');
       }
     } else {
       print('Error connecting to server. Status code: ${response.statusCode}');
-      createDialog(context, 'Error connecting to server');
     }
   } catch (error) {
     print('Error fetching requests: $error');
-    createDialog(context, 'Error fetching requests');
   }
 }
 

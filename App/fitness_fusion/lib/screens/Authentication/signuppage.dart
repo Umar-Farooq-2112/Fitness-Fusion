@@ -371,7 +371,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             createDialog(context, "Invalid Phone Number");
                           } else {
                             if (await ifUserPresent(
-                                    context, _usernameController.text) !=
+                                    _usernameController.text) !=
                                 0) {
                               createDialog(context, "Username Already Present");
                             } else {
@@ -388,9 +388,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                   _emailController.text,
                                   _phoneController.text);
 
-                              if (await registerNewUser(context, input)) {
+                              if (await registerNewUser(input)) {
                                 int myuser_id = await ifUserPresent(
-                                    context, _usernameController.text);
+                                    _usernameController.text);
 
                                 MyUser = new User(
                                     myuser_id,

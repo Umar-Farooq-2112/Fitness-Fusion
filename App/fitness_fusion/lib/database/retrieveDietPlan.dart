@@ -8,7 +8,7 @@ import 'package:fitness_fusion/dataclass/createDialog.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-Future<DietPlan> retrieveDietPlan(BuildContext context, int user_id) async {
+Future<DietPlan> retrieveDietPlan(int user_id) async {
   DietPlan temp = new DietPlan(0, getDateTime('2003-12-12'), 'temp');
 
   final response = await http.get(Uri.parse(DB("diet/$user_id").getLink()));

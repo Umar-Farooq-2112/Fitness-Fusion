@@ -350,7 +350,7 @@ class _TrainerRequestState extends State<TrainerRequest> {
                             createDialog(context, "Invalid Phone Number");
                           } else {
                             if (await ifUserPresent(
-                                    context, _usernameController.text) !=
+                                     _usernameController.text) !=
                                 0) {
                               createDialog(context, "Username Already Present");
                             } else {
@@ -367,7 +367,7 @@ class _TrainerRequestState extends State<TrainerRequest> {
                                   _emailController.text,
                                   _phoneController.text);
 
-                              if (await requestTrainer(context, input)) {
+                              if (await requestTrainer(input)) {
                                 Navigator.of(context).pop();
                                 createDialog(context, "Request Added");
                               } else {

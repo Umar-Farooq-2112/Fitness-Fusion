@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 Future<bool> registerNewUser(
-    BuildContext context, User input) async {
+    User input) async {
   Map<String, dynamic> tempBody = {
     "username": input.username,
     "password": input.password,
@@ -39,7 +39,7 @@ Future<bool> registerNewUser(
   }
 }
 
-Future<int> ifUserPresent(BuildContext context, String username) async {
+Future<int> ifUserPresent(String username) async {
   try {
     final response =
         await http.get(Uri.parse(DB("validate/$username").getLink()));

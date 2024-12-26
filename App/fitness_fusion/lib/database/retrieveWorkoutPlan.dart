@@ -6,8 +6,7 @@ import 'package:fitness_fusion/dataclass/Plan.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-Future<WorkoutPlan> retriveWorkoutPlan(
-    BuildContext context, int user_id) async {
+Future<WorkoutPlan> retriveWorkoutPlan(int user_id) async {
   WorkoutPlan temp = new WorkoutPlan(0, getDateTime('2000-01-01'), "temp", 0);
   List<WorkoutExercise> tempexercise = [];
 

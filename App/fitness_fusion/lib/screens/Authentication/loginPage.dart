@@ -121,11 +121,11 @@ class _LoginPageState extends State<LoginPage> {
                                 } else {
                                   createDialog(context, "Login Successfull");
 
-                                  MyUser = await fetchUserData(context, id);
+                                  MyUser = await fetchUserData(id);
 
-                                  await fetchAndSetExercises(context);
-                                  await fetchAndSetFoodItems(context);
-                                  await retrieveKeywords(context);
+                                  await fetchAndSetExercises();
+                                  await fetchAndSetFoodItems();
+                                  await retrieveKeywords();
 
                                   if (MyUser.type == "Trainee") {
                                     bool st =
@@ -140,9 +140,9 @@ class _LoginPageState extends State<LoginPage> {
                                     }
 
                                     MyDietPlan = await retrieveDietPlan(
-                                        context, MyUser.user_id);
+                                        MyUser.user_id);
                                     MyWorkoutPlan = await retriveWorkoutPlan(
-                                        context, MyUser.user_id);
+                                        MyUser.user_id);
                                     Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
@@ -156,8 +156,8 @@ class _LoginPageState extends State<LoginPage> {
                                               TrainerWindow()),
                                     );
                                   } else if (MyUser.type == "Admin") {
-                                    retrieveFeedback(context);
-                                    fetchRequests(context);
+                                    retrieveFeedback();
+                                    fetchRequests();
 
                                     Navigator.pushReplacement(
                                       context, // Use the stored context

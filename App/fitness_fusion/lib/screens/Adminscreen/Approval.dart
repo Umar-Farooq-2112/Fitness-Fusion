@@ -110,14 +110,14 @@ class _ApprovalListState extends State<ApprovalList> {
               approval: Requests[index],
               onApprove: () {
                 setState(() async {
-                  if (await manageRequest(context, Requests[index].user_id, 1)) {
+                  if (await manageRequest( Requests[index].user_id, 1)) {
                     Requests.removeAt(index);
                   }
                 });
               },
               onReject: () {
                 setState(() async {
-                  if (await manageRequest(context, Requests[index].user_id, 0)) {
+                  if (await manageRequest( Requests[index].user_id, 0)) {
                     Requests.removeAt(index);
                   }
                 });

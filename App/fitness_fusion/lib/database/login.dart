@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import 'package:fitness_fusion/database/database.dart';
 import 'package:fitness_fusion/dataclass/User.dart';
-import 'package:fitness_fusion/dataclass/createDialog.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 Future<int> checkValidPassword(String username, String password) async {
@@ -18,7 +16,8 @@ Future<int> checkValidPassword(String username, String password) async {
   return 0;
 }
 
-Future<User> fetchUserData(BuildContext context, int id) async {
+
+Future<User> fetchUserData(int id) async {
   final response = await http.get(Uri.parse(DB('userdata/$id').getLink()));
   late User temp;
 
@@ -30,14 +29,14 @@ Future<User> fetchUserData(BuildContext context, int id) async {
         responseData['password'],
         responseData['name'],
         responseData['gender'],
-        responseData['weight'],
-        responseData['height'],
+        responseData['weight'].toDouble(),
+        responseData['height'].toDouble(),
         responseData['dateOfBirth'],
         responseData['type'],
         responseData['email'],
         responseData['contact']);
   } else {
-    createDialog(context, "error Connecting to server");
+    print("error Connecting to server");
   }
   return temp;
 }

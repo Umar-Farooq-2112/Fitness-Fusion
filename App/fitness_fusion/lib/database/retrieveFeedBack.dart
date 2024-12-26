@@ -8,7 +8,7 @@ import 'package:fitness_fusion/dataclass/createDialog.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-Future<void> retrieveFeedback(BuildContext context) async {
+Future<void> retrieveFeedback() async {
   try {
     final response = await http.get(Uri.parse(DB('feedback').getLink()));
 
@@ -18,10 +18,8 @@ Future<void> retrieveFeedback(BuildContext context) async {
         All_Feedbacks = responseData.map((item) =>
             UserFeedback(item['username'], getDateTime(item['date']), item['description'])).toList();
       }
-    } else {
-        createDialog(context, 'else error');
-    }
+    } 
   } catch (error) {
-        createDialog(context, 'catch block');
+        print('catch block');
   }
 }
